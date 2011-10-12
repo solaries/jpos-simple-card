@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Mobile Payment Login!</string>
+    <!-- Front Activity -->
+    <string name="lblUsername">Username : </string>
+    <string name="lblPassword">Password : </string>
+    
+    <string name="app_name">MobilePayment</string>
+</resources>
