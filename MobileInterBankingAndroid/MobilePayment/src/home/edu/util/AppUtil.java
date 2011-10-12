@@ -1,5 +1,5 @@
 package home.edu.util;
 
-public class AppUtil {
-
+public class AppUtil{
+	
 }
