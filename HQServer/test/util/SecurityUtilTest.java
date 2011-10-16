@@ -1,5 +1,6 @@
-package test.util;
+package util;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.hqsolution.hqserver.util.SecurityUtil;
@@ -15,7 +16,7 @@ public class SecurityUtilTest {
 	public void testMD5() {
 		String plainText = "HQServer";
 		String cipherText = SecurityUtil.md5ToString(plainText);
-		System.out.println(cipherText);
+		Assert.assertEquals("8fb19fbfe9764733485e165d58c888dd", cipherText);
 
 	}
 }

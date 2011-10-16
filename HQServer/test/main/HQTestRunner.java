@@ -1,4 +1,5 @@
-package test.util;
+package main;
+
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -11,9 +12,11 @@ import org.junit.runner.notification.Failure;
  */
 public class HQTestRunner {
 	public static void main(String[] args) {
-		Result result = JUnitCore.runClasses(test.util.SecurityUtilTest.class);
+		System.out.println("Run HQ test suite");
+		Result result = JUnitCore.runClasses(util.SecurityUtilTest.class);
 		for (Failure failure : result.getFailures()) {
 			System.out.println(failure.toString());
 		}
+		System.out.println("End HQ test suite");
 	}
 }
