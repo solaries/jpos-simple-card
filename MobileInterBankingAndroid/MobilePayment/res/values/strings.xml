@@ -2,8 +2,9 @@
 <resources>
     <string name="hello">Hello World, Mobile Payment Login!</string>
     <!-- Front Activity -->
-    <string name="lblUsername">Username : </string>
-    <string name="lblPassword">Password : </string>
+    <string name="main.username">Username : </string>
+    <string name="main.password">Password : </string>
+    <string name="main.create.account">Password : </string>
     
     <string name="app_name">MobilePayment</string>
 </resources>
