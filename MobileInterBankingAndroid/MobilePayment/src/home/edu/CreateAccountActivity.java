@@ -15,7 +15,7 @@ public class CreateAccountActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.create_account);
+		setContentView(R.layout.create_account_screen);
 		setTitle(R.string.create_account_title);
 		
 	}

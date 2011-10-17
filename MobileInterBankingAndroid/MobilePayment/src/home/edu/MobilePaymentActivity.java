@@ -1,11 +1,13 @@
 package home.edu;
 
 
+import home.edu.listener.OnLoginClickListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 /**
  * First Activity 
@@ -23,7 +25,9 @@ public class MobilePaymentActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.login_screen);
+        Button loginButton = (Button)findViewById(R.id.btnLogin);
+        loginButton.setOnClickListener(new OnLoginClickListener(this));
         
     }
     
