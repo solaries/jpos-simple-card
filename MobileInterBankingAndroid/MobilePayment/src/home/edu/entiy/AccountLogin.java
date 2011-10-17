@@ -7,10 +7,8 @@ package home.edu.entiy;
  * @author Quan
  *
  */
-public class AccountLogin {
-	private String username; 
+public class AccountLogin { 
 	private String password;
-	
 	private String fullname;
 	private String email;
 	
@@ -18,9 +16,6 @@ public class AccountLogin {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public String getUsername() {
-		return username;
-	}
 
 	public String getPassword() {
 		return password;

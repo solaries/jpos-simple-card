@@ -1,6 +1,8 @@
 package home.edu;
 
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +16,7 @@ import android.view.MenuItem;
  *
  */
 public class MobilePaymentActivity extends Activity {
-	
+	private static final int ACTIVITY_CREATE=1;
 	private static final int CREATE_ID = Menu.FIRST;
 	
     /** Called when the activity is first created. */
@@ -40,11 +42,16 @@ public class MobilePaymentActivity extends Activity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch(item.getItemId()) {
             case CREATE_ID:
-                
+            	createAccountScreen();
                 return true;
         }
 
         return super.onMenuItemSelected(featureId, item);
+    }
+    
+    private void createAccountScreen(){
+    	Intent i = new Intent(this, CreateAccountActivity.class);
+        startActivityForResult(i, ACTIVITY_CREATE);
     }
     
 }

@@ -4,7 +4,15 @@
     <!-- Front Activity -->
     <string name="main.username">Username : </string>
     <string name="main.password">Password : </string>
-    <string name="main.create.account">Password : </string>
+    <string name="main.create.account">Create Account </string>
+    
+    <!-- Create Account Activity -->
+    <string name="create.account.title">Create New Account</string>
+    <string name="create.account.email">Email : </string>
+    <string name="create.account.confirmEmail">Confirm Email : </string>
+    <string name="create.account.password">Password : </string>
+    <string name="create.account.confirmPassword">Confirm Password: </string>
+    <string name="create.account.fullname">Full Name : </string>
     
     <string name="app_name">MobilePayment</string>
 </resources>
