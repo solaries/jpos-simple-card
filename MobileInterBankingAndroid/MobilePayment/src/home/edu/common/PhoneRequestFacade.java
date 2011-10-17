@@ -1,7 +1,12 @@
 package home.edu.common;
 
-import home.edu.entiy.CreditCard;
+import home.edu.entiy.BankAccount;
 
+/**
+ * Implements the methods that make request to server
+ * @author Quan
+ *
+ */
 public class PhoneRequestFacade {
 	private static PhoneRequest instance;
 	
@@ -19,7 +24,7 @@ public class PhoneRequestFacade {
 			
 		}
 		
-		public boolean storeCreditCard(CreditCard creditCard) {
+		public boolean storeCreditCard(BankAccount creditCard) {
 			return false;
 		}
 	}

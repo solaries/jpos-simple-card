@@ -1,7 +1,6 @@
 package home.edu.common;
 
-import home.edu.entiy.CreditCard;
-
+import home.edu.entiy.BankAccount;
 
 /**
  * 
@@ -10,5 +9,5 @@ import home.edu.entiy.CreditCard;
  *
  */
 public interface PhoneRequest {
-	boolean storeCreditCard(CreditCard creditCard);
+	boolean storeCreditCard(BankAccount creditCard);
 }

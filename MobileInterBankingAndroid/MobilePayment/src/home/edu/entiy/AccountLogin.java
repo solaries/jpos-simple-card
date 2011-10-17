@@ -1,5 +1,36 @@
 package home.edu.entiy;
 
-public class AccountLogin {
 
+/**
+ * 
+ * Simulate an account login with username and password
+ * @author Quan
+ *
+ */
+public class AccountLogin {
+	private String username; 
+	private String password;
+	
+	private String fullname;
+	private String email;
+	
+	public AccountLogin() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public String getFullname() {
+		return fullname;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
 }
