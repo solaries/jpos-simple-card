@@ -1,0 +1,1 @@
+create database hqdb collate utf8_unicode_ci ;

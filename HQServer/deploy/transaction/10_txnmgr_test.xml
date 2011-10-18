@@ -1,0 +1,140 @@
+<txnmgr-lms class="org.jpos.transaction.TransactionManager" logger="Q2">
+ <property name="queue"            value="TXNMGRTEST" />
+ <property name="sessions"         value="5" />
+ <property name="persistent-space" value="jdbm:txnmgrtest" />
+ <property name="debug"            value="true" />
+ <property name="retry-interval"   value="250" />
+ <property name="pause-timeout"   value="2000" />
+  
+ <participant class="org.hcmus.lms.Switch" logger="Q2">
+  
+        <property name="027207" value="Redeem"/>
+        <property name="027567" value="BalanceInquiry"/>
+        <property name="027208" value="VoidCard"/>
+        <property name="027708" value="VoidCard"/>
+        <property name="027707" value="Reload"/> 
+        <property name="020400" value="Reversal"/>
+        <property name="000000" value="ErrorFlow"/>
+        
+</participant> 
+ 
+ <group name="Redeem">
+ 	<participant class="org.hcmus.myparticipant.CheckField" logger="Q2" >
+ 		<property name="fields" value="3,11,35,41,42,48,61" /> 
+ 	</participant>
+ 
+	 <participant class="org.hcmus.myparticipant.Open" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.CheckCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckMerchant" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.Redeem" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.RedeemSendResponse" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.Close" logger="Q2"></participant>
+	 
+ </group> 
+ 
+ <group name="BalanceInquiry">
+ 	 <participant class="org.hcmus.myparticipant.CheckField" logger="Q2" >
+ 		<property name="fields" value="3,11,35,41,42,48" /> 
+ 	 </participant>
+ 
+	 <participant class="org.hcmus.myparticipant.Open" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.CheckCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckMerchant" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.BalanceInquiry" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.BalanceSendResponse" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.Close" logger="Q2"></participant>
+ </group>
+ 
+  <group name="VoidCard">
+ 	 <participant class="org.hcmus.myparticipant.CheckField" logger="Q2" >
+ 		<property name="fields" value="3,4,11,35,41,42,48,61" /> 
+ 	 </participant>
+ 
+	 <participant class="org.hcmus.myparticipant.Open" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.CheckCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckInvoice" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckMerchant" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.VoidCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.VoidCardSendResponse" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.Close" logger="Q2"></participant>
+ </group>
+ 
+ <group name="Reload">
+ 	<participant class="org.hcmus.myparticipant.CheckField" logger="Q2" >
+ 		<property name="fields" value="3,11,35,41,42,48" /> 
+ 	</participant>
+ 
+	 <participant class="org.hcmus.myparticipant.Open" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.CheckCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckMerchant" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.Reload" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.ReloadSendResponse" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.Close" logger="Q2"></participant>
+	 
+ </group> 
+ 
+ <group name="Reversal">
+ 	 <participant class="org.hcmus.myparticipant.CheckField" logger="Q2" >
+ 		<property name="fields" value="3,11,35,41,42,48" /> 
+ 	 </participant>
+ 
+	 <participant class="org.hcmus.myparticipant.Open" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.CheckCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckMerchant" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckReversal" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.Reversal" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.ReversalSendResponse" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.Close" logger="Q2"></participant>
+ </group>
+ 
+<group name="ErrorFlow">
+	 <participant class="org.hcmus.myparticipant.CheckForward" logger="Q2" ></participant>
+	 <participant class="org.hcmus.myparticipant.SendResponse" logger="Q2"></participant>
+</group> 
+ 
+ 
+ <!-- 
+ <group name="Activation">
+ 	 <participant class="org.hcmus.myparticipant.CheckField" logger="Q2" >
+ 		<property name="fields" value="3,4,11,35,41,42,48,61" /> 
+ 	 </participant>
+ 
+	 <participant class="org.hcmus.myparticipant.Open" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.CheckMerchant" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckActivatedCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.ActivatedCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.SendActivationResponse" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.Close" logger="Q2"></participant>
+ </group>
+ 
+ <group name="SubtractPoint">
+	 <participant class="org.hcmus.myparticipant.CheckField" logger="Q2" >
+ 		<property name="fields" value="3,4,11,35,41,42,48,61" /> 
+ 	 </participant>
+ 
+	 <participant class="org.hcmus.myparticipant.Open" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.CheckCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckMerchant" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.SubtractPoint" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.MakeAdvertisementMessage" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.SendResponse" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.Close" logger="Q2"></participant>
+ </group> 
+   
+ <group name="Redemption">
+ 	<participant class="org.hcmus.myparticipant.CheckField" logger="Q2" >
+ 		<property name="fields" value="3,4,11,35,41,42,48,61" /> 
+ 	</participant>
+ 
+	 <participant class="org.hcmus.myparticipant.Open" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.CheckCard" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckMerchant" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.CheckGiftPoint" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.Redemption" logger="Q2" > </participant>
+	 <participant class="org.hcmus.myparticipant.SendResponse" logger="Q2"></participant>
+	 <participant class="org.hcmus.myparticipant.Close" logger="Q2"></participant>
+ </group> 
+ -->
+ 
+</txnmgr-lms>
+
