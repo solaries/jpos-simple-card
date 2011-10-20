@@ -34,31 +34,46 @@ public class DataProvider {
 
 		/** Declare the JDBC objects. **/
 		Connection con = null;
-
-		try {
 			
 			/**
 			 * Read all configuration value from configuration file through
 			 * configuration object which is registered in NameRegistrar.
 			 */
-			HQConfiguration cfg = (HQConfiguration) NameRegistrar.get(SystemConstant.SYSTEM_CONF);
-			String username = cfg.getConfiguration().get(USERNAME);
-			String password = cfg.getConfiguration().get(PASSWORD);
+			HQConfiguration cfg;
+			try {
+				cfg = (HQConfiguration) NameRegistrar.get(SystemConstant.SYSTEM_CONF);
+			} catch (NotFoundException e) {
+				e.printStackTrace();
+				return null;
+			}
+			String userName = cfg.getConfiguration().get(USERNAME);
+			String passWord = cfg.getConfiguration().get(PASSWORD);
 			String host = cfg.getConfiguration().get(HOST);
 			String port = cfg.getConfiguration().get(PORT);
 			String dbName = cfg.getConfiguration().get(DATABASE_NAME);
+			con = DataProvider.getConnection(userName, passWord, host, port, dbName);
+			
+			if(cfg != null)
+				cfg = null; //make a change to GC deallocate configuration reference
+			
+		return con;	
+	}
+	
+	public static Connection getConnection(String userName, String passWord, String host, String port, String dbName) {
+		/** Declare the JDBC objects. **/
+		Connection con = null;
 
+		try {
+			
 			/** Create a variable for the connection URL string. **/
-			String connectionUrl = "jdbc:sqlserver://" + host + ":" + port
+			String connectionUrl = "jdbc:mysql://" + host + ":" + port
 					+ "/" + dbName;
 
 			/** Register mySQL server driver and establish the connection. **/
-			Class.forName("com.mysql.jdbc.Driver”).");
+			Class.forName("com.mysql.jdbc.Driver");
 			
 			/** Get connection **/
-			con = DriverManager.getConnection(connectionUrl,username,password);
-			
-			cfg = null; //make a change to GC deallocate configuration reference
+			con = DriverManager.getConnection(connectionUrl,userName,passWord);
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -66,10 +81,6 @@ public class DataProvider {
 
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
-			return null;
-
-		} catch (NotFoundException e) {
-			e.printStackTrace();
 			return null;
 		}
 		return con;

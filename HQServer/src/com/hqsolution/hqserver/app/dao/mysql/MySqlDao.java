@@ -10,6 +10,9 @@ import com.hqsolution.hqserver.app.dao.idao.IAccount;
  */
 public class MySqlDao extends DbDaoFactory {
 
+	/**
+	 * Read an account object with account ID. 
+	 */
 	@Override
 	public IAccount getAccount() {
 		// TODO Auto-generated method stub

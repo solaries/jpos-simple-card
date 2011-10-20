@@ -18,6 +18,11 @@ import javax.crypto.NoSuchPaddingException;
  */
 public class SecurityUtil {
 
+	/**
+	 * Get hash string of a plain text 
+	 * @param plainText
+	 * @return Hase string
+	 */
 	public static String md5ToString(String plainText) {
 
 		byte messageDigest[] = SecurityUtil.md5(plainText);
@@ -31,6 +36,11 @@ public class SecurityUtil {
 		return hexString.toString();
 	}
 
+	/**
+	 * Get hash byte of a plain text
+	 * @param plainText Plain text need to be hash
+	 * @return
+	 */
 	public static byte[] md5(String plainText) {
 		byte[] defaultBytes = plainText.getBytes();
 		try {
@@ -44,6 +54,11 @@ public class SecurityUtil {
 		}
 	}
 
+	/**
+	 * Get array of byte after doing asymmetric encrytion
+	 * @param plainData Plain data need to be encryption
+	 * @return array of byte after encrypting.
+	 */
 	public static byte[] rsaEncrypt(byte[] plainData) {
 		PublicKey publicKey = RSAKeyFactory.getInstance().getPublicKey();
 		Cipher cipher = null;
@@ -67,6 +82,11 @@ public class SecurityUtil {
 		return cipherData;
 	}
 	
+	/**
+	 * Get array of byte after doing asymmetric dencrytion
+	 * @param plainData Plain data (raw byte data) need to be dencryption
+	 * @return array of byte after dencrypting.
+	 */
 	public static byte[] rsaDecrypt(byte[] cipherData) {
 		Key privateKey = RSAKeyFactory.getInstance().getPrivateKey();
 		Cipher cipher = null;
@@ -90,11 +110,21 @@ public class SecurityUtil {
 		return plainData;
 	}
 	
+	/**
+	 * Get array of byte after doing asymmetric encrytion
+	 * @param plainData Plain data (string data) need to be encryption
+	 * @return array of byte after encrypting.
+	 */
 	public static byte[] rsaEncryptedString(String plainText) {
 		byte[] plainByte = plainText.getBytes();
 		return SecurityUtil.rsaEncrypt(plainByte);
 	}
 	
+	/**
+	 * Get string data after doing asymmetric dencrytion
+	 * @param plainData Plain data (raw byte data) need to be dencryption
+	 * @return array of byte after dencrypting.
+	 */
 	public static String rsaDecrypted(byte[] cipherData) {
 		byte[] plainData = SecurityUtil.rsaDecrypt(cipherData);
 		return new String(plainData);

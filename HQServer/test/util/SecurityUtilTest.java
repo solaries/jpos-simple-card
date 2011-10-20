@@ -1,6 +1,8 @@
 package util;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.hqsolution.hqserver.util.RSAKeyFactory;
@@ -13,6 +15,18 @@ import com.hqsolution.hqserver.util.SecurityUtil;
  */
 public class SecurityUtilTest {
 
+	
+	@BeforeClass
+	public void runBeforeClass() {
+		System.out.println("Run " + this.getClass().getName() + " .");
+	}
+	
+	@AfterClass
+	public void runAfterClass() {
+		System.out.println("End " + this.getClass().getName() + " .");
+	}
+	
+	
 	@Test
 	public void testMD5() {
 		String plainText = "HQServer";

@@ -22,6 +22,10 @@ public class HQConfiguration extends QBeanSupport {
 		log.info("HQServer configuration stopped...");
 	}
 
+	/**
+	 * Register configuration with NameRegistrar
+	 * @see NameRegistrar
+	 */
 	public void setName(String name){
 		super.setName(name);
 		NameRegistrar.register(name, this);
