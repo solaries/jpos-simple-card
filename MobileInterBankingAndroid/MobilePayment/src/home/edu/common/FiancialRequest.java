@@ -8,6 +8,6 @@ import home.edu.entiy.BankAccount;
  * @author Quan
  *
  */
-public interface PhoneRequest {
+public interface FiancialRequest {
 	boolean storeCreditCard(BankAccount creditCard);
 }

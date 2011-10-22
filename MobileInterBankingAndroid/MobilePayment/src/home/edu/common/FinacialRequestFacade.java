@@ -7,17 +7,17 @@ import home.edu.entiy.BankAccount;
  * @author Quan
  *
  */
-public class PhoneRequestFacade {
-	private static PhoneRequest instance;
+public class FinacialRequestFacade {
+	private static FiancialRequest instance;
 	
-	public static PhoneRequest getInstance(){
+	public static FiancialRequest getInstance(){
 		if(instance == null){
 			return new PhoneRequestImpl();
 		}
 		return instance;
 	}
 	
-	public static final class PhoneRequestImpl implements PhoneRequest{
+	public static final class PhoneRequestImpl implements FiancialRequest{
 		
 		
 		PhoneRequestImpl(){
