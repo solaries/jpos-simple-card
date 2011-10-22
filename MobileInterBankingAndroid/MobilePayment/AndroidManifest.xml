@@ -14,5 +14,6 @@
 
 		<activity android:name=".CreateAccountActivity" />
 		<activity android:name=".MainScreenActivity" />
+		<activity android:name=".AddBankAccountActivity" />
 	</application>
 </manifest>
