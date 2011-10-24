@@ -5,7 +5,13 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="lib/junit.jar"/>
 	<classpathentry kind="lib" path="lib/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
-	<classpathentry kind="lib" path="E:/Nam4/LuanVan/JProject/jposee/build/jpos-ee.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.18-bin.jar"/>
+	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/bsh-2.0b4.jar"/>
+	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/commons-cli.jar"/>
+	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/cweb-extser-0.1-b2-dev.jar"/>
+	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jdbm-1.0.jar"/>
+	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jline-0.9.91.jar"/>
+	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jpos.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -29,7 +29,7 @@ public class Switch implements GroupSelector, Configurable {
 			/** Get message from context **/
 			//ISOMsg msg = (ISOMsg) ctx.get(SystemConstant.REQUEST);
 
-			String groups = "";
+			String groups = "test";
 
 			/*String transactionName = MessageHelper.getTransactionName(msg);
 			

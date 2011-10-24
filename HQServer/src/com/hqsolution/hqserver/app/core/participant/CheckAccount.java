@@ -67,7 +67,7 @@ public class CheckAccount implements TransactionParticipant {
 			ctx.put(Constant.RC, "12");
 			return ABORTED | READONLY | NO_JOIN;
 		}*/
-		return PREPARED ;
+		return PREPARED | NO_JOIN ;
 	}
 
 }

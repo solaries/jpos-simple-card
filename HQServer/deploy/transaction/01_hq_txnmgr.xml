@@ -19,7 +19,7 @@
      
 </participant> 
  
-<group name="Redeem">
+<group name="test">
  	<participant class="com.hqsolution.hqserver.app.core.participant.CheckAccount" logger="Q2" ></participant>
 	 <participant class="com.hqsolution.hqserver.app.core.participant.SendResponse" logger="Q2"></participant>
  </group> 

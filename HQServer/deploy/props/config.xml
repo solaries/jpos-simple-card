@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<lmsconfig name="HQConfiguration" class="com.hqsolution.hqserver.util.HQConfiguration" logger="Q2">
+<hqconfig name="HQConfiguration" class="com.hqsolution.hqserver.util.HQConfiguration" logger="Q2">
 
 	<!-- Start DB configuration -->
 	
@@ -11,4 +11,4 @@
 	<property name="password" value="matkhau" />
 	
 	<!-- End DB configuration -->
-</lmsconfig>
+</hqconfig>
