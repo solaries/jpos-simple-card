@@ -98,4 +98,39 @@ public class MessageUtil {
 		BinaryCodec binaryCodec = new BinaryCodec();
 		return binaryCodec.decode(bits.getBytes());
 	}
+	
+	public static List<Byte> toList(byte[] bs) {
+		List<Byte> list = new ArrayList<Byte>();
+		for (byte b : bs) {
+			list.add(b);
+		}
+
+		return list;
+	}
+
+	public static byte[] toBytes(List<Byte> list) {
+		byte[] bs = new byte[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			bs[i] = list.get(i);
+		}
+		return bs;
+	}
+
+	public static List<Byte> to2ByteList(List<Byte> list) {
+		if (list.size() < 2) {
+			List<Byte> bytes = new ArrayList();
+			bytes.add(Byte.valueOf("0"));
+			bytes.addAll(list);
+			return bytes;
+		} else if (list.size() > 2){
+			if(list.get(list.size() - 3) != (byte)0){
+				return null;
+			}
+			List<Byte> bytes = new ArrayList();	
+			bytes.add(list.get(list.size() - 2));
+			bytes.add(list.get(list.size() - 1));
+			return bytes;
+		}
+		return list;
+	}
 }
