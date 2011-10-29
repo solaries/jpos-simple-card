@@ -1,5 +1,6 @@
 package home.edu.pack;
 
+import home.edu.entiy.EntityType;
 import home.edu.util.AppUtil;
 import home.edu.util.MessageUtil;
 
@@ -8,22 +9,22 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-public class ObjectPackage {
+public class ObjectPackage extends CommonMessage{
 	private Object obj;
-	private byte[] data;
+	private byte[] type;
 
 	public ObjectPackage() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public ObjectPackage(Object obj) {
+	public ObjectPackage(Object obj, byte[] objectType) {
 		super();
-		this.obj = obj;
-		process();
+		setObj(obj, objectType);
 	}
 
-	public void setObj(Object obj) {
+	public void setObj(Object obj, byte[] objectType) {
 		this.obj = obj;
+		this.type = objectType;
 		process();
 	}
 
@@ -31,29 +32,23 @@ public class ObjectPackage {
 		return data;
 	}
 
-	private void process() {
+	protected void process() {
 		try {
 			byte[] bytes = MessageUtil.convertObjectToByteArray(obj);
 			this.data = bytes;
 			long len = bytes.length;
-			// convert len to byte[]
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			DataOutputStream dos = new DataOutputStream(bos);
-			dos.writeLong(len);
-			dos.flush();
-			//lenth have to be 2 byte
-			byte[] d = bos.toByteArray();
-			dos.close();
+			byte[] d = AppUtil.longToByteArray(len);
+			d = AppUtil.to2ByteArray(d);
+			this.data = MessageUtil.bindToHead(d, this.data);			
+			//add object type
 			
-			List<Byte> list = MessageUtil.toList(d);
-			list = MessageUtil.to2ByteList(list);
-			list.addAll(MessageUtil.toList(data));
-			this.data =  MessageUtil.toBytes(list);
+			this.data = MessageUtil.bindToHead(type, data);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		super.process();
 	}
 }

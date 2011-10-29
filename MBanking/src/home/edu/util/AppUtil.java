@@ -2,6 +2,9 @@ package home.edu.util;
 
 import home.edu.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,5 +53,27 @@ public class AppUtil {
 			return bytes;
 		}
 		return list;
+	}
+	
+	public static byte[] to2ByteArray(byte[] bs) {
+		List<Byte> li = MessageUtil.toList(bs);
+		li = to2ByteList(li);
+		return toBytes(li);
+	}
+	
+	public static byte[] longToByteArray(long number){
+		try {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			DataOutputStream dos = new DataOutputStream(bos);
+			dos.writeLong(number);
+			dos.flush();
+			//lenth have to be 2 byte
+			byte[] d = bos.toByteArray();
+			dos.close();
+			
+			return d;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

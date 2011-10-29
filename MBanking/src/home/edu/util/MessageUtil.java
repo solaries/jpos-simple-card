@@ -133,4 +133,11 @@ public class MessageUtil {
 		}
 		return list;
 	}
+	
+	public static byte[] bindToHead(byte[] b1, byte[] b2){
+		List<Byte> b1List = MessageUtil.toList(b1);
+		List<Byte> b2List = MessageUtil.toList(b2);
+		b1List.addAll(b2List);
+		return toBytes(b1List);
+	}
 }
