@@ -10,7 +10,10 @@ import org.jpos.iso.ISOMsg;
 
 public class BankAccount implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6753967775904068032L;
 	private String bankName;
 	private String routingNumber;
 	private String accountNumber;

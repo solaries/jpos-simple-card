@@ -1,9 +1,15 @@
 package home.edu.pack;
 
+import java.io.Serializable;
+
 import home.edu.util.AppUtil;
 import home.edu.util.MessageUtil;
 
-public class CommonMessage{
+public class CommonMessage implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected byte[] data = {};
 	
 	

@@ -1,5 +1,7 @@
 package home.edu.entiy;
 
+import java.io.Serializable;
+
 
 /**
  * 
@@ -7,7 +9,11 @@ package home.edu.entiy;
  * @author Quan
  *
  */
-public class AccountLogin { 
+public class AccountLogin implements Serializable{ 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3291841779931161962L;
 	private String password;
 	private String fullname;
 	private String email;
