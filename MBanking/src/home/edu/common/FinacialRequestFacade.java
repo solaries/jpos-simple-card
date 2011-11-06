@@ -1,5 +1,6 @@
 package home.edu.common;
 
+import home.edu.entiy.AccountLogin;
 import home.edu.entiy.BankAccount;
 
 /**
@@ -24,7 +25,7 @@ public class FinacialRequestFacade {
 			
 		}
 		
-		public boolean storeCreditCard(BankAccount creditCard) {
+		public boolean saveUserInfo(AccountLogin accountLogin) {
 			return false;
 		}
 	}

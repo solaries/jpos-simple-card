@@ -4,7 +4,7 @@ import home.edu.entiy.BankAccount;
 
 import org.jpos.iso.ISOMsg;
 
-public class BankAccountInfoProcessor extends FinancialRequestProcessor{
+public class BankAccountInfoProcessor extends RequestProcessor{
 	
 	//indicate saved action is OK
 	private Boolean persistOk;

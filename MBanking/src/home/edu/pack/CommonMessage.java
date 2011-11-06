@@ -1,6 +1,7 @@
 package home.edu.pack;
 
 import java.io.Serializable;
+import java.util.List;
 
 import home.edu.util.AppUtil;
 import home.edu.util.MessageUtil;
@@ -21,9 +22,18 @@ public class CommonMessage implements Serializable{
 		this.data = data;
 	}
 	
+	public byte[] pack() {
+		return data;
+	}
+	
+	public byte[] unpack() {
+		List<byte[]> list = MessageUtil.cutByteArray(data, 2);
+		return list.get(1);
+	}
+	
 	protected void process() {
 		long dataLen = data.length;
-		byte[] lenBytes = MessageUtil.bindToHead(AppUtil.longToByteArray(dataLen), data);
+		byte[] lenBytes = MessageUtil.bindToHead(MessageUtil.longToByteArray(dataLen), data);
 		this.data = lenBytes;
 	}
 }

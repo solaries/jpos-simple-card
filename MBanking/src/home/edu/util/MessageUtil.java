@@ -4,6 +4,8 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -139,5 +141,49 @@ public class MessageUtil {
 		List<Byte> b2List = MessageUtil.toList(b2);
 		b1List.addAll(b2List);
 		return toBytes(b1List);
+	}
+	
+	public static byte[] longToByteArray(long number){
+		try {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			DataOutputStream dos = new DataOutputStream(bos);
+			dos.writeLong(number);
+			dos.flush();
+			//lenth have to be 2 byte
+			byte[] d = bos.toByteArray();
+			dos.close();
+			
+			return d;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public static long byteArrayToLong(byte[] input){
+		try {
+			ByteArrayInputStream bis = new ByteArrayInputStream(input);
+			DataInputStream dis = new DataInputStream(bis);
+			long numb = dis.readLong();
+			dis.close();
+			return numb;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public static ArrayList<byte[]> cutByteArray(byte[] bs,int bNo){
+		if(bs.length < 2){
+			throw new RuntimeException("");
+		}
+		List<Byte> list = AppUtil.toList(bs);
+		List<Byte> listHead = new ArrayList<Byte>();
+		for(int i = 0; i < bNo; i++){
+			listHead.add(list.get(0));
+			list.remove(0);
+		}
+		ArrayList<byte[]> arrayList = new ArrayList<byte[]>();
+		arrayList.add(AppUtil.toBytes(listHead));
+		arrayList.add(AppUtil.toBytes(list));
+		return arrayList;
 	}
 }
