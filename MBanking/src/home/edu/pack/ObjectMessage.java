@@ -17,14 +17,19 @@ public class ObjectMessage extends CommonMessage{
 	private Object obj;
 	private byte[] type;
 
-	public ObjectMessage() {
-		
-	}
-
+	
 	public ObjectMessage(Object obj, byte[] objectType) {
 		super();
 		setObj(obj, objectType);
 	}
+	
+	
+
+	public ObjectMessage(byte[] data, boolean unpack) {
+		super(data, unpack);
+	}
+
+
 
 	public void setObj(Object obj, byte[] objectType) {
 		this.obj = obj;
@@ -36,6 +41,24 @@ public class ObjectMessage extends CommonMessage{
 		return data;
 	}
 	
+	
+	public Object unpackObject() {
+		try {
+			byte[] ba = unpack();
+			List<byte[]> list = MessageUtil.cutByteArray(ba, 2);
+			byte[] tmpObjAndLen = list.get(1);
+			list = MessageUtil.cutByteArray(ba, 2);
+			byte[] obj = list.get(1);
+			return MessageUtil.convertByteArrayToObject(obj);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	protected void process() {
 		try {
