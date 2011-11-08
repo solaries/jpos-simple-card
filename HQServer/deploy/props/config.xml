@@ -11,4 +11,9 @@
 	<property name="password" value="matkhau" />
 	
 	<!-- End DB configuration -->
+	
+	
+	<!-- Start configure for timing log -->
+	<property name="timming-log" value="log.TIMMING" />
+	<!-- End configure for timing log -->
 </hqconfig>
