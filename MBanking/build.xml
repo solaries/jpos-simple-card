@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Nov 8, 2011 8:52:44 PM                                                        
+
+     project    
+     description
+                   
+     Anh Quan                                                                
+     ====================================================================== -->
+<project name="project" default="default">
+	<description>
+            description
+    </description>
+
+	<property name="dir.src" value="src" />
+	<property name="dir.lib" value="lib" />
+	<property name="dir.src.dao" value="${dir.src}/com/hqsolution/hqserver/app/dao" />
+	<property name="dir.src.dao.util" value="${dir.src}/home/edu/msg/util" />
+	<property name="dir.src.dao.pack" value="${dir.src}/home/edu/msg/pack" />
+	<property name="dir.build" value="build" />
+	<property name="dir.dist" value="../HQServer/dist" />
+
+	<path id="buildClasspath">
+		<fileset dir="${dir.lib}">
+			<include name="*.jar" />
+		</fileset>
+
+		<pathelement location="${build.dir}" />
+	</path>
+
+	<target name="cleanCommonFiles">
+		<delete dir="${dir.build}" />
+		<delete dir="${dir.dist}" />
+	</target>
+
+	<!-- Creates the output directories -->
+	<target name="prepareCommonFiles" depends="cleanCommonFiles">
+		<mkdir dir="${dir.build}" />
+		<mkdir dir="${dir.dist}" />
+	</target>
+
+	<target name="buildCommonFiles" depends="prepareCommonFiles">
+		<javac srcdir="${dir.src.dao.util}" destdir="${dir.build}">
+			<classpath refid="buildClasspath" />
+		</javac>
+		<javac srcdir="${dir.src.dao.pack}" destdir="${dir.build}">
+			<classpath refid="buildClasspath" />
+		</javac>
+		<javac srcdir="${dir.src.dao}" destdir="${dir.build}">
+			<classpath refid="buildClasspath" />
+		</javac>
+	</target>
+
+	<target name="buildJarCommonFiles" depends="buildCommonFiles">
+		<jar jarfile="${dir.dist}/common_file.jar" basedir="${dir.build}" />
+	</target>
+
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="default" depends="depends" description="description">
+		<antcall target="buildJarCommonFiles">
+		</antcall>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="depends">
+	</target>
+
+</project>
