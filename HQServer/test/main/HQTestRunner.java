@@ -1,6 +1,7 @@
 package main;
 
 
+import log.LogTestSuite;
 import util.UtilTestSuite;
 import dao.DaoTestSuite;
 
@@ -15,6 +16,7 @@ public class HQTestRunner {
 		String argss[] = new String[] {};
 		DaoTestSuite.main(argss);
 		UtilTestSuite.main(argss);
+		LogTestSuite.main(argss);
 		System.out.println("End HQ test suite");
 	}
 }

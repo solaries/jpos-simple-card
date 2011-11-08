@@ -17,13 +17,13 @@ public class SecurityUtilTest {
 
 	
 	@BeforeClass
-	public void runBeforeClass() {
-		System.out.println("Run " + this.getClass().getName() + " .");
+	public static void runBeforeClass() {
+		System.out.println("Run SecurityUtilTest .");
 	}
 	
 	@AfterClass
-	public void runAfterClass() {
-		System.out.println("End " + this.getClass().getName() + " .");
+	public static void runAfterClass() {
+		System.out.println("End SecurityUtilTest .");
 	}
 	
 	

@@ -14,13 +14,13 @@ import com.hqsolution.hqserver.app.dao.mysql.DataProvider;
 public class DataProviderTest {
 
 	@BeforeClass
-	public void runBeforeClass() {
-		System.out.println("Run " + this.getClass().getName() + " .");
+	public static void runBeforeClass() {
+		System.out.println("Run DataProviderTest.");
 	}
 
 	@AfterClass
-	public void runAfterClass() {
-		System.out.println("End " + this.getClass().getName() + " .");
+	public static void runAfterClass() {
+		System.out.println("End DataProviderTest .");
 	}
 
 	@Test
