@@ -1,5 +1,6 @@
 package com.hqsolution.hqserver.app.dao.mysql;
 
+import com.hqsolution.hqserver.app.dao.BaseDbDao;
 import com.hqsolution.hqserver.app.dao.factory.DbDaoFactory;
 import com.hqsolution.hqserver.app.dao.idao.IAccount;
 
@@ -8,10 +9,11 @@ import com.hqsolution.hqserver.app.dao.idao.IAccount;
  * @author HUNGPT
  * @see DbDaoFactory
  */
-public class MySqlDao extends DbDaoFactory {
+public class MySqlDao extends BaseDbDao {
 
 	/**
 	 * Read an account object with account ID. 
+	 * 
 	 */
 	@Override
 	public IAccount getAccount() {
