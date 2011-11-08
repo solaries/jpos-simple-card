@@ -7,13 +7,17 @@ import org.jpos.iso.ISOMsg;
 
 import com.hqsolution.hqserver.app.dao.AccountLogin;
 import com.hqsolution.hqserver.app.dao.EntityType;
+import com.hqsolution.hqserver.app.dao.FlexibleTask;
+import com.hqsolution.hqserver.app.dao.TaskCodeDefinition;
 
 public class AccountCreateProcessor extends RequestProcessor {
 
 	public AccountCreateProcessor(AccountLogin accountLogin) {
 		super();
-		ObjectPackMessage message = new ObjectPackMessage(accountLogin,
-				EntityType.ACCOUNT_LOGIN);
+		FlexibleTask flexibleTask = new FlexibleTask(
+				TaskCodeDefinition.ADD_ACCOUNT, accountLogin);
+		ObjectPackMessage message = new ObjectPackMessage(flexibleTask,
+				EntityType.FLEXIBLE_TASK);
 		// for field 11
 		byte[] data = message.pack();
 		IsoMessageBuilder.createBuilder().rebuild(this.msgSent)
