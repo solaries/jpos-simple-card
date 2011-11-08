@@ -12,6 +12,7 @@
 	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jdbm-1.0.jar"/>
 	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jdom-1.0.jar"/>
 	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jline-0.9.91.jar"/>
-	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jpos.jar"/>
+	<classpathentry kind="lib" path="/jposee/modules/jpos/lib/jpos.jar" sourcepath="/jposee/modules/jpos/lib/jpos.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
