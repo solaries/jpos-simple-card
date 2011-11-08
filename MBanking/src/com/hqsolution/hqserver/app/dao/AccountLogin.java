@@ -1,4 +1,4 @@
-package home.edu.entiy;
+package com.hqsolution.hqserver.app.dao;
 
 import java.io.Serializable;
 

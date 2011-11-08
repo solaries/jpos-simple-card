@@ -1,4 +1,4 @@
-package home.edu.entiy;
+package com.hqsolution.hqserver.app.dao;
 
 public class EntityType {
 	public static byte[] ACCOUNT_LOGIN = {0,1};

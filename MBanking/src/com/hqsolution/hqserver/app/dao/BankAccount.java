@@ -1,6 +1,6 @@
-package home.edu.entiy;
+package com.hqsolution.hqserver.app.dao;
 
-import home.edu.util.MessageUtil;
+import home.edu.msg.util.MessageUtil;
 
 import java.io.IOException;
 import java.io.Serializable;

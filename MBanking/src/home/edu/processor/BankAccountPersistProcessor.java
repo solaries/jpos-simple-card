@@ -1,14 +1,15 @@
 package home.edu.processor;
 
-import home.edu.entiy.BankAccount;
 
 import org.jpos.iso.ISOMsg;
+
+import com.hqsolution.hqserver.app.dao.BankAccount;
 
 public class BankAccountPersistProcessor extends RequestProcessor{
 	private BankAccount account;
 	
-	public BankAccountPersistProcessor(ISOMsg isoMsg) {
-		super(isoMsg);
+	public BankAccountPersistProcessor() {
+		
 	}
 	
 	@Override

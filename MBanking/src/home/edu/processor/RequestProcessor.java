@@ -1,11 +1,11 @@
 package home.edu.processor;
 
+import home.edu.factory.IsoMessageBuilder;
+import home.edu.factory.PackagerFactory;
+import home.edu.msg.util.MessageUtil;
+
 import java.io.IOException;
 import java.util.Date;
-
-import home.edu.R;
-import home.edu.factory.PackagerFactory;
-import home.edu.util.MessageUtil;
 
 import org.jpos.iso.ISOChannel;
 import org.jpos.iso.ISOException;
@@ -17,14 +17,19 @@ public abstract class RequestProcessor {
 	private static final String SERVER = "localhost";
 	private static final int PORT = 8080;
 
-	private ISOMsg msgSent;
-	private ISOMsg msgReceived;
+	protected ISOMsg msgSent;
+	protected ISOMsg msgReceived;
 	private byte[] field3;
 	private byte[] field11;
 	private byte[] field48;
 
-	public RequestProcessor(ISOMsg sentMsg) {
-		this.msgSent = sentMsg;
+	public RequestProcessor() {
+		ISOPackager pack = PackagerFactory.getPackager();
+		this.msgSent = IsoMessageBuilder.createBuilder()
+				.setMTI("0200")
+				.setField3("000011")
+				.setField11(new Date())
+				.build();
 	}
 
 	public ISOMsg getMsgReceived() {
@@ -33,9 +38,7 @@ public abstract class RequestProcessor {
 
 	public void process() {
 		try {
-			ISOPackager pack = PackagerFactory.getPackager();
-			msgSent.setPackager(pack);
-			ISOChannel channel = new ASCIIChannel(SERVER, PORT, pack);
+			ISOChannel channel = new ASCIIChannel(SERVER, PORT, this.msgSent.getPackager());
 			channel.connect();
 			channel.send(msgSent);
 			msgReceived = channel.receive();
@@ -54,23 +57,22 @@ public abstract class RequestProcessor {
 
 		field48 = msgReceived.getBytes(11);
 	}
-	
+
 	public byte[] getField3() {
 		return field3;
 	}
-	
+
 	public byte[] getField11() {
 		return field11;
 	}
-	
+
 	public Date getField11Date() {
 		long dateInMilisecond = MessageUtil.byteArrayToLong(field11);
 		return new Date(dateInMilisecond);
 	}
-	
+
 	public byte[] getField48() {
 		return field48;
 	}
-	
-	
+
 }

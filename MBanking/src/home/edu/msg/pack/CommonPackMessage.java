@@ -1,28 +1,23 @@
-package home.edu.pack;
+package home.edu.msg.pack;
 
-import java.io.Serializable;
+import home.edu.msg.util.MessageUtil;
+
 import java.util.List;
 
-import home.edu.util.AppUtil;
-import home.edu.util.MessageUtil;
-
-public class CommonMessage implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class CommonPackMessage{
+	
 	protected byte[] data = {};
 
-	public CommonMessage() {
+	public CommonPackMessage() {
 		process();
 	}
 
-	public CommonMessage(byte[] data) {
+	public CommonPackMessage(byte[] data) {
 		this.data = data;
 		process();
 	}
 
-	public CommonMessage(byte[] data, boolean unpack) {
+	public CommonPackMessage(byte[] data, boolean unpack) {
 		this.data = data;
 		if (!unpack) {
 			process();

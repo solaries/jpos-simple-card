@@ -1,7 +1,7 @@
 package home.edu.common;
 
-import home.edu.entiy.AccountLogin;
-import home.edu.entiy.BankAccount;
+import com.hqsolution.hqserver.app.dao.AccountLogin;
+import com.hqsolution.hqserver.app.dao.BankAccount;
 
 /**
  * 

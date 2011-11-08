@@ -1,22 +1,29 @@
 package home.edu.processor;
 
 import home.edu.factory.IsoMessageBuilder;
+import home.edu.msg.pack.ObjectPackMessage;
 
 import org.jpos.iso.ISOMsg;
 
-public class AccountCreateProcessor extends RequestProcessor{
+import com.hqsolution.hqserver.app.dao.AccountLogin;
+import com.hqsolution.hqserver.app.dao.EntityType;
 
-	
-	
-	public AccountCreateProcessor(ISOMsg sentMsg) {
-		super(sentMsg);
-		// TODO Auto-generated constructor stub
+public class AccountCreateProcessor extends RequestProcessor {
+
+	public AccountCreateProcessor(AccountLogin accountLogin) {
+		super();
+		ObjectPackMessage message = new ObjectPackMessage(accountLogin,
+				EntityType.ACCOUNT_LOGIN);
+		// for field 11
+		byte[] data = message.pack();
+		IsoMessageBuilder.createBuilder().rebuild(this.msgSent)
+				.setField48(data).build();
 	}
 
 	@Override
 	public void process() {
 		super.process();
 		ISOMsg receiveMessage = getMsgReceived();
-		
+
 	}
 }

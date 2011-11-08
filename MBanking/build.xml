@@ -30,13 +30,11 @@
 
 	<target name="cleanCommonFiles">
 		<delete dir="${dir.build}" />
-		<delete dir="${dir.dist}" />
 	</target>
 
 	<!-- Creates the output directories -->
 	<target name="prepareCommonFiles" depends="cleanCommonFiles">
 		<mkdir dir="${dir.build}" />
-		<mkdir dir="${dir.dist}" />
 	</target>
 
 	<target name="buildCommonFiles" depends="prepareCommonFiles">

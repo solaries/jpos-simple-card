@@ -1,16 +1,17 @@
 package home.edu.processor;
 
-import home.edu.entiy.BankAccount;
 
 import org.jpos.iso.ISOMsg;
+
+import com.hqsolution.hqserver.app.dao.BankAccount;
 
 public class BankAccountInfoProcessor extends RequestProcessor{
 	
 	//indicate saved action is OK
 	private Boolean persistOk;
 	
-	public BankAccountInfoProcessor(ISOMsg isoMsg) {
-		super(isoMsg);
+	public BankAccountInfoProcessor() {
+		
 	}
 	
 	@Override
