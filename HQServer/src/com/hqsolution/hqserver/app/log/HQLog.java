@@ -4,6 +4,11 @@ import org.jpos.util.Log;
 import org.jpos.util.NameRegistrar;
 import org.jpos.util.NameRegistrar.NotFoundException;
 
+/**
+ * This class is aim to control logger level for log object
+ * @author HUNGPT
+ *
+ */
 public class HQLog extends Log {
 
 	public HQLog() {
