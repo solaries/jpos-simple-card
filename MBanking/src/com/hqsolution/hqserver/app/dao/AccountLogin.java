@@ -19,7 +19,7 @@ public class AccountLogin implements Serializable{
 	private String email;
 	
 	public AccountLogin() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 
@@ -33,5 +33,17 @@ public class AccountLogin implements Serializable{
 	
 	public String getEmail() {
 		return email;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 }
