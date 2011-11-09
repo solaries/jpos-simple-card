@@ -9,14 +9,12 @@
      ====================================================================== -->
 <project name="project" default="default">
 	<description>
-            description
+            Build Common Message API
     </description>
 
 	<property name="dir.src" value="src" />
 	<property name="dir.lib" value="lib" />
 	<property name="dir.src.dao" value="${dir.src}/com/hqsolution/hqserver/app/dao" />
-	<property name="dir.src.dao.util" value="${dir.src}/home/edu/msg/util" />
-	<property name="dir.src.dao.pack" value="${dir.src}/home/edu/msg/pack" />
 	<property name="dir.build" value="build" />
 	<property name="dir.dist" value="../HQServer/dist" />
 
@@ -38,12 +36,6 @@
 	</target>
 
 	<target name="buildCommonFiles" depends="prepareCommonFiles">
-		<javac srcdir="${dir.src.dao.util}" destdir="${dir.build}">
-			<classpath refid="buildClasspath" />
-		</javac>
-		<javac srcdir="${dir.src.dao.pack}" destdir="${dir.build}">
-			<classpath refid="buildClasspath" />
-		</javac>
 		<javac srcdir="${dir.src.dao}" destdir="${dir.build}">
 			<classpath refid="buildClasspath" />
 		</javac>
