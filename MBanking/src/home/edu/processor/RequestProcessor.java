@@ -2,7 +2,6 @@ package home.edu.processor;
 
 import home.edu.factory.IsoMessageBuilder;
 import home.edu.factory.PackagerFactory;
-import home.edu.msg.util.MessageUtil;
 
 import java.io.IOException;
 import java.util.Date;
@@ -12,6 +11,8 @@ import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
 import org.jpos.iso.channel.ASCIIChannel;
+
+import com.hqsolution.hqserver.app.dao.util.MessageUtil;
 
 public abstract class RequestProcessor {
 	private static final String SERVER = "localhost";

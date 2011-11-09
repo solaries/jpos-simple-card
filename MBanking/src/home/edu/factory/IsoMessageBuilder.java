@@ -1,12 +1,13 @@
 package home.edu.factory;
 
-import home.edu.msg.util.MessageUtil;
 
 import java.util.Date;
 
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
+
+import com.hqsolution.hqserver.app.dao.util.MessageUtil;
 
 public class IsoMessageBuilder {
 

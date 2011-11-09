@@ -1,7 +1,6 @@
 package home.edu.processor;
 
 import home.edu.factory.IsoMessageBuilder;
-import home.edu.msg.pack.ObjectPackMessage;
 
 import org.jpos.iso.ISOMsg;
 
@@ -9,6 +8,7 @@ import com.hqsolution.hqserver.app.dao.AccountLogin;
 import com.hqsolution.hqserver.app.dao.EntityType;
 import com.hqsolution.hqserver.app.dao.FlexibleTask;
 import com.hqsolution.hqserver.app.dao.TaskCodeDefinition;
+import com.hqsolution.hqserver.app.dao.pack.ObjectPackMessage;
 
 public class AccountCreateProcessor extends RequestProcessor {
 
