@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <hqconfig name="HQConfiguration" class="com.hqsolution.hqserver.util.HQConfiguration" logger="Q2">
-
-	<!-- Start DB configuration -->
-	
-	<property name="dbtype" value="mysql" />
-	<property name="host" value="localhost" />
-	<property name="port" value="3306" />
-	<property name="dbname" value="hqdb" />
-	<property name="username" value="hqgroup" />
-	<property name="password" value="matkhau" />
-	
-	<!-- End DB configuration -->
-	
-	
+	<property name="dbtype" value="mysql" />	
 	<!-- Start configure for timing log -->
 	<property name="timming-log" value="log.TIMMING" />
 	<!-- End configure for timing log -->
