@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectionPool name="MySqlConnectionPool" class="com.hqsolution.hqserver.app.dao.mysql.MySqlConnectionPool" logger="Q2">
+
+	<!-- Start DB connection pool configuration -->
+	
+	<property name="host" value="localhost" />
+	<property name="port" value="3306" />
+	<property name="dbname" value="hqdb" />
+	<property name="username" value="hqgroup" />
+	<property name="password" value="matkhau" />
+	
+	<!-- End DB connection pool configuration -->
+	
+</ConnectionPool>
