@@ -1,6 +1,5 @@
 package com.hqsolution.hqserver.app.dao.pack;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -9,7 +8,7 @@ import com.hqsolution.hqserver.app.dao.util.MessageUtil;
 /**
  * 
  * @author Anh Quan
- *
+ * 
  */
 public class ObjectUnPackMessage extends CommonUnPackMessage {
 
@@ -31,32 +30,32 @@ public class ObjectUnPackMessage extends CommonUnPackMessage {
 			return obj;
 		}
 		try {
-			//get type(2 bytes) - len (4 bytes)- object
+			// get type(2 bytes) - len (4 bytes)- object
 			byte[] ba = unpack();
 			List<byte[]> list = MessageUtil.cutByteArray(ba, 2);
 			this.objectType = MessageUtil.byteArrayToShort(list.get(0));
 			byte[] tmpObjAndLen = list.get(1);
-			list = MessageUtil.cutByteArray(ba, 4);
+			list = MessageUtil.cutByteArray(tmpObjAndLen, 4);
 			this.objLength = MessageUtil.byteArrayToInt(list.get(0));
 			byte[] obj = list.get(1);
-			this.obj =  MessageUtil.convertByteArrayToObject(obj);
-			return obj;
+			this.obj = MessageUtil.convertByteArrayToObject(obj);
+			return this.obj;
 		} catch (IOException e) {
-
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 
 		}
 		return null;
 	}
-	
+
 	public short getObjectType() {
 		return objectType;
 	}
-	
+
 	public int getObjLength() {
 		return objLength;
 	}
-	
+
 	public Object getObj() {
 		return obj;
 	}
