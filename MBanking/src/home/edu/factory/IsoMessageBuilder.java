@@ -32,7 +32,7 @@ public class IsoMessageBuilder {
 
 	public IsoMessageBuilder setField11(Date date) {
 		try {
-			isoMsg.set(11, MessageUtil.longToByteArray(date.getTime()));
+			isoMsg.set(11, MessageUtil.dateToSixBytes(date));
 		} catch (ISOException e) {
 
 		}

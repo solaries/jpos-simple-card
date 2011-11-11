@@ -1,7 +1,9 @@
 package home.edu.listener;
 
 import home.edu.MobilePaymentActivity;
+import home.edu.R;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.SimpleAdapter.ViewBinder;
 
 public class OnClickResetListener implements View.OnClickListener{
@@ -18,6 +20,7 @@ public class OnClickResetListener implements View.OnClickListener{
 
 
 	public void onClick(View v) {
+		
 		
 	}
 }

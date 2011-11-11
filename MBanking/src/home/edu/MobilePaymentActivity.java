@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * First Activity 
@@ -20,6 +21,8 @@ import android.widget.Button;
 public class MobilePaymentActivity extends Activity {
 	private static final int ACTIVITY_CREATE=1;
 	private static final int CREATE_ID = Menu.FIRST;
+	
+	
 	
     /** Called when the activity is first created. */
     @Override
@@ -57,5 +60,7 @@ public class MobilePaymentActivity extends Activity {
     	Intent i = new Intent(this, CreateAccountActivity.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
+    
+   
     
 }

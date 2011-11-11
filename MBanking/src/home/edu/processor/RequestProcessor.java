@@ -16,7 +16,7 @@ import com.hqsolution.hqserver.app.dao.util.MessageUtil;
 
 public abstract class RequestProcessor {
 	private static final String SERVER = "localhost";
-	private static final int PORT = 8080;
+	private static final int PORT = 65000;
 
 	protected ISOMsg msgSent;
 	protected ISOMsg msgReceived;
@@ -28,7 +28,7 @@ public abstract class RequestProcessor {
 		ISOPackager pack = PackagerFactory.getPackager();
 		this.msgSent = IsoMessageBuilder.createBuilder()
 				.setMTI("0200")
-				.setField3("000011")
+				.setField3("000000")
 				.setField11(new Date())
 				.build();
 	}
@@ -56,7 +56,7 @@ public abstract class RequestProcessor {
 
 		field11 = msgReceived.getBytes(11);
 
-		field48 = msgReceived.getBytes(11);
+		field48 = msgReceived.getBytes(48);
 	}
 
 	public byte[] getField3() {
@@ -68,8 +68,7 @@ public abstract class RequestProcessor {
 	}
 
 	public Date getField11Date() {
-		long dateInMilisecond = MessageUtil.byteArrayToLong(field11);
-		return new Date(dateInMilisecond);
+		return MessageUtil.sixBytesToDate(field11);
 	}
 
 	public byte[] getField48() {

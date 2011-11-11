@@ -9,6 +9,6 @@ import com.hqsolution.hqserver.app.dao.BankAccount;
  * @author Quan
  *
  */
-public interface FiancialRequest {
+public interface FinancialRequest {
 	boolean saveUserInfo(AccountLogin accountLogin);
 }

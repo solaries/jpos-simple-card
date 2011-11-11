@@ -9,6 +9,11 @@ import org.jpos.iso.ISOMsg;
 
 import com.hqsolution.hqserver.app.dao.util.MessageUtil;
 
+/**
+ * 
+ * @author Quan
+ *
+ */
 public class BankAccount implements Serializable{
 	
 	/**
@@ -48,40 +53,5 @@ public class BankAccount implements Serializable{
 		return fullName;
 	}
 	
-	public ISOMsg createSavingMsg(){
-		try {
-			byte[] objectByte = MessageUtil.convertObjectToByteArray(this);
-			ISOMsg isoMsg = new ISOMsg();
-			isoMsg.setMTI ("0200");
-			isoMsg.set (3, "000004");
-			isoMsg.set (41, "00000025");
-			isoMsg.set (42, MessageUtil.getHexString(this.fullName.getBytes()));
-			isoMsg.set (48, MessageUtil.getHexString(objectByte));
-			//isoMsg.set (61, "QUAN MINH LE AAAAAAAAAAAAAAAAAA");
-			return isoMsg;
-		} catch (ISOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public static BankAccount fromIsoMessage(ISOMsg isoMsg){
-		try {
-			String bits = isoMsg.getString(48);
-			byte[] bytes = MessageUtil.bitsToBytes(bits);
-			return (BankAccount)MessageUtil.convertByteArrayToObject(bytes);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
 	
 }
