@@ -31,7 +31,12 @@
 	<EditText android:id="@+id/txtConfirmPassword"
 		android:layout_width="match_parent" android:layout_height="wrap_content"
 		android:inputType="textPassword"></EditText>
-	<Button android:layout_width="match_parent" android:id="@+id/btnCreate"
-		android:text="Create Account" android:layout_height="wrap_content"></Button>
+	<Button android:layout_width="match_parent" android:text="Create Account"
+		android:layout_height="wrap_content" android:id="@+id/btnCreateAccount"></Button>
+	<ProgressBar android:id="@+id/createAccountProgressBar"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical|center_horizontal"></ProgressBar>
 
 </LinearLayout>
+
+
