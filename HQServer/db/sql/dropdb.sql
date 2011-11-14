@@ -1,2 +1,2 @@
 /*drop database table*/
-drop database if exists storyonline;
+drop database if exists hqdb;

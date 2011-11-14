@@ -6,10 +6,10 @@ use hqdb;
 DROP TABLE IF EXISTS `Account`;
 CREATE TABLE `Account`
 (
-`AccountId` VARCHAR(10) not null,
-`Email` VARCHAR(50) NOT null,
-`Password` VARCHAR(50) NOT null,
-`FirstLastName` VARCHAR(50) NOT null,
+`accountId` VARCHAR(20) not null,
+`email` VARCHAR(50) NOT null,
+`password` VARCHAR(50) NOT null,
+`fullName` VARCHAR(50) NOT null,
 PRIMARY KEY(`AccountId`)
 ) Engine=InnoDB;
 
@@ -17,13 +17,13 @@ PRIMARY KEY(`AccountId`)
 DROP TABLE IF EXISTS `BankAccount`;
 CREATE TABLE `BankAccount`
 (
-`BankAccountId` VARCHAR(10) not null,
-`BankAccountName` VARCHAR(50) NOT null,
-`BankName` VARCHAR(50) NOT null,
-`BankAccountNumber` VARCHAR(20) NOT null,
-`RoutingNumber` VARCHAR(30),
-`AccountId` varchar(50) 
-PRIMARY KEY(`BankAccountId`, `AccountId`)
+`bankAccountId` VARCHAR(20) not null,
+`bankAccountName` VARCHAR(50) NOT null,
+`bankName` VARCHAR(50) NOT null,
+`bankAccountNumber` VARCHAR(20) NOT null,
+`routingNumber` VARCHAR(30),
+`accountId` varchar(20), 
+PRIMARY KEY(`bankAccountId`, `accountId`)
 ) Engine=InnoDB;
 
 
