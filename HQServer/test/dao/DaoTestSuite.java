@@ -7,7 +7,7 @@ import org.junit.runner.notification.Failure;
 public class DaoTestSuite {
 	public static void main(String[] args) {
 		System.out.println("------Run DAO test suite------");
-		Result result = JUnitCore.runClasses(MySqlConnectionPoolTest.class, DataProviderTest.class);
+		Result result = JUnitCore.runClasses(MySqlConnectionPoolTest.class, DataProviderTest.class, AccountDaoTest.class);
 		for (Failure failure : result.getFailures()) {
 			System.out.println(failure.toString());
 		}

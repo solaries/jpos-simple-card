@@ -15,12 +15,12 @@ public class DataProviderTest {
 
 	@BeforeClass
 	public static void runBeforeClass() {
-		System.out.println("Run DataProviderTest.");
+		System.out.println("Run " + DataProviderTest.class.getName() + ".");
 	}
 
 	@AfterClass
 	public static void runAfterClass() {
-		System.out.println("End DataProviderTest .");
+		System.out.println("End " +  DataProviderTest.class.getName() + ".");
 	}
 
 	@Test

@@ -10,15 +10,18 @@ import com.hqsolution.hqserver.app.dao.mysql.DataProvider;
 public class BaseTest {
 
 	Connection con = null;
+	
 	String userName = "hqgroup";
 	String passWord = "matkhau";
 	String host = "localhost";
 	String port = "3306";
 	String dbName = "hqdb";
 	
-	@BeforeClass
-	public void runBeforeClass() {
-		System.out.println("Run " + this.getClass().getName() + " .");
+	public BaseTest(){
+		init();
+	}
+	
+	public void init(){
 		System.out.println("Create connection.");
 		con =  DataProvider.getConnection(userName, passWord, host, port, dbName);
 		if(con != null) {
@@ -28,8 +31,19 @@ public class BaseTest {
 		}
 	}
 	
-	@AfterClass
-	public void runAfterClass() {
-		System.out.println("End " + this.getClass().getName() + " .");
+	@BeforeClass
+	public static void runBeforeClass() {
+		System.out.println("Run " + BaseTest.class.getName() + " .");
 	}
+	
+	@AfterClass
+	public static void runAfterClass() {
+		System.out.println("End " + BaseTest.class.getName() + " .");
+	}
+	
+	public Connection getConnection(){
+		return con;
+	}
+	
+	
 }

@@ -12,12 +12,12 @@ public class HQLoggerTest {
 
 	@BeforeClass
 	public static void runBeforeClass() {
-		System.out.println("Run HQLoggerTest .");
+		System.out.println("Run " + HQLoggerTest.class.getName() + ".");
 	}
 
 	@AfterClass
 	public static void runAfterClass() {
-		System.out.println("End HQLoggerTest .");
+		System.out.println("End " + HQLoggerTest.class.getName() + ".");
 	}
 
 	@Test

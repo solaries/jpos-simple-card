@@ -20,12 +20,12 @@ import com.hqsolution.hqserver.app.dao.mysql.MySqlPoolableObjectFactory;
 public class MySqlConnectionPoolTest {
 	@BeforeClass
 	public static void runBeforeClass() {
-		System.out.println("Run MySqlConnectionPoolTest.");
+		System.out.println("Run " + MySqlConnectionPoolTest.class.getName() + ".");
 	}
 
 	@AfterClass
 	public static void runAfterClass() {
-		System.out.println("End MySqlConnectionPoolTest .");
+		System.out.println("End " +  MySqlConnectionPoolTest.class.getName() + ".");
 	}
 
 	@Test
