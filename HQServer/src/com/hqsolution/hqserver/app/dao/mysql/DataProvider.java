@@ -11,7 +11,7 @@ import com.hqsolution.hqserver.util.HQConfiguration;
 import com.hqsolution.hqserver.util.SystemConstant;
 
 /**
- * This class aim to get mysql connect.
+ * This class aim to get mysql connect for testing purpose.
  * @author HUNGPT
  * 
  */

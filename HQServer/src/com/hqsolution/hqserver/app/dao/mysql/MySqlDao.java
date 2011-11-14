@@ -1,5 +1,6 @@
 package com.hqsolution.hqserver.app.dao.mysql;
 
+import com.hqsolution.hqserver.app.dao.AccountDao;
 import com.hqsolution.hqserver.app.dao.BaseDbDao;
 import com.hqsolution.hqserver.app.dao.factory.DbDaoFactory;
 import com.hqsolution.hqserver.app.dao.idao.IAccount;
@@ -17,8 +18,7 @@ public class MySqlDao extends BaseDbDao {
 	 */
 	@Override
 	public IAccount getAccount() {
-		// TODO Auto-generated method stub
-		return null;
+		return new AccountDao();
 	}
 	
 	
