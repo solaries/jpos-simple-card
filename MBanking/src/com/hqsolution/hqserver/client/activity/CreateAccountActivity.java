@@ -1,12 +1,12 @@
 package com.hqsolution.hqserver.client.activity;
 
-import com.hqsolution.hqserver.client.data.helper.ApplicationDataHelper;
-
-import home.edu.R;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.EditText;
+
+import com.hqsolution.hqserver.client.R;
+import com.hqsolution.hqserver.client.data.helper.ApplicationDataHelper;
 
 /**
  * Create new account for login

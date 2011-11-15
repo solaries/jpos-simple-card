@@ -1,8 +1,8 @@
 package com.hqsolution.hqserver.client.listener;
 
+import com.hqsolution.hqserver.client.R;
 import com.hqsolution.hqserver.client.activity.MobilePaymentActivity;
 
-import home.edu.R;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.SimpleAdapter.ViewBinder;

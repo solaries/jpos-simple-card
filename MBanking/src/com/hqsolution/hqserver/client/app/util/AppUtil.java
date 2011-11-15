@@ -1,8 +1,9 @@
 package com.hqsolution.hqserver.client.app.util;
 
-import home.edu.R;
 
 import java.util.List;
+
+import com.hqsolution.hqserver.client.R;
 
 import android.app.Activity;
 import android.widget.ArrayAdapter;

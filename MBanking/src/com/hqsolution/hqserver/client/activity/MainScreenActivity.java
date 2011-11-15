@@ -1,11 +1,11 @@
 package com.hqsolution.hqserver.client.activity;
 
 
-import home.edu.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hqsolution.hqserver.client.R;
 import com.hqsolution.hqserver.client.app.util.AppUtil;
 
 import android.app.ListActivity;

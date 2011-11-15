@@ -1,9 +1,9 @@
 package com.hqsolution.hqserver.client.activity;
 
 
+import com.hqsolution.hqserver.client.R;
 import com.hqsolution.hqserver.client.listener.OnLoginClickListener;
 
-import home.edu.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
