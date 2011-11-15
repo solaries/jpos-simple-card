@@ -14,7 +14,7 @@ import org.junit.Test;
 import com.hqsolution.hqserver.app.common.DatabaseConnection;
 import com.hqsolution.hqserver.app.dao.AccountDao;
 import com.hqsolution.hqserver.app.dao.mysql.MySqlPoolableObjectFactory;
-import com.hqsolution.hqserver.app.dto.Account;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.util.IdGenerator;
 import com.hqsolution.hqserver.util.SQLResult;
 import com.mysql.jdbc.PreparedStatement;
@@ -39,7 +39,7 @@ public class AccountDaoTest extends BaseTest {
 		Assert.assertEquals(result, SQLResult.SUCCESS);*/
 		System.out.println("Insert new Account into DB");
 		String INSERT_ACCOUNT = "insert into hqdb.account(accountId,email,password,fullName) values(?,?,?,?)";
-		Account acct = new Account("a@abc.com", "Hung Pham", "123");
+		HQAccount acct = new HQAccount("a@abc.com", "Hung Pham", "123");
 		String accountId = IdGenerator.getId();
 		try {
 			PreparedStatement insertAccount = (PreparedStatement) getConnection().prepareStatement(INSERT_ACCOUNT);

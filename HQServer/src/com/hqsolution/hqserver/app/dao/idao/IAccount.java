@@ -1,7 +1,7 @@
 package com.hqsolution.hqserver.app.dao.idao;
 
 import com.hqsolution.hqserver.app.common.DatabaseConnection;
-import com.hqsolution.hqserver.app.dto.Account;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 
 /**
  * 
@@ -14,7 +14,7 @@ public interface IAccount {
 	 * @param acct account what we do need to insert to DB
 	 * @return new accountId
 	 */
-	public String createAccount(Account acct);
+	public String createAccount(HQAccount acct);
 	
 	/**
 	 * Create a new account in system.
@@ -22,7 +22,7 @@ public interface IAccount {
 	 * @param acct account what we do need to insert to DB
 	 * @return new accountId
 	 */
-	public String createAccount(DatabaseConnection conn, Account acct);
+	public String createAccount(DatabaseConnection conn, HQAccount acct);
 	
 	/**
 	 * Remove out an account.

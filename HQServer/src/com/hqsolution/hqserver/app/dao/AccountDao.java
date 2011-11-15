@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import com.hqsolution.hqserver.app.common.DatabaseConnection;
 import com.hqsolution.hqserver.app.dao.idao.IAccount;
-import com.hqsolution.hqserver.app.dto.Account;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.util.IdGenerator;
 import com.hqsolution.hqserver.util.SQLResult;
 import com.mysql.jdbc.PreparedStatement;
@@ -26,13 +26,13 @@ public class AccountDao implements IAccount {
 	}
 
 	@Override
-	public String createAccount(Account acct) {
+	public String createAccount(HQAccount acct) {
 		//TODO 
 		return null;
 	}
 
 	@Override
-	public String createAccount(DatabaseConnection conn, Account acct) {
+	public String createAccount(DatabaseConnection conn, HQAccount acct) {
 		String accountId = IdGenerator.getId();
 		try {
 			PreparedStatement insertAccount = (PreparedStatement) conn.prepareStatement(INSERT_ACCOUNT);
