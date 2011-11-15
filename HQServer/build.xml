@@ -85,6 +85,7 @@
       <copy todir="${build.cfg}">
         <fileset dir="${cfg.dir}">
           <include name="**/*.xml"/>
+        	<include name="**/*.dtd"/>
         </fileset>
       </copy>
       <copy todir="${build.src}">
