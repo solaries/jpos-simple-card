@@ -27,10 +27,11 @@ public class OnClickCreateAccountListener implements View.OnClickListener,
 		login.setFullName(activity.getName().getText().toString());
 		login.setEmail(activity.getEmail().getText().toString());
 		login.setPassword(activity.getPassword().getText().toString());
-		if(facade.saveUserInfo(login)){
+		/*if(facade.saveUserInfo(login)){
 			//save user info into phone
 			activity.save(login);
-		}
+		}*/
+		activity.save(login);
 		// close dialog
 		activity.getProgressDialog().dismiss();
 	}
@@ -38,9 +39,6 @@ public class OnClickCreateAccountListener implements View.OnClickListener,
 	public void onClick(View v) {
 		ProgressDialog pd = activity.showProgressDialog();
 		ProgressBar bar = new ProgressBar(activity);
-		pd.addContentView(bar, new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.FILL_PARENT,
-				LinearLayout.LayoutParams.FILL_PARENT));
 		Thread thread = new Thread(this);
 		thread.start();
 	}

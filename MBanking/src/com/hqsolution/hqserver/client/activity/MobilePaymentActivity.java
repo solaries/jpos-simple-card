@@ -19,7 +19,7 @@ import com.hqsolution.hqserver.client.listener.OnLoginClickListener;
  *
  */
 public class MobilePaymentActivity extends Activity {
-	private static final int ACTIVITY_CREATE=1;
+	private static final int ACTIVITY_CREATE=2;
 	private static final int CREATE_ID = Menu.FIRST;
 	
 	

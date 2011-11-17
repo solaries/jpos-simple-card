@@ -3,10 +3,12 @@ package com.hqsolution.hqserver.client.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.client.data.helper.ApplicationDataHelper;
+import com.hqsolution.hqserver.client.listener.OnClickCreateAccountListener;
 
 /**
  * Create new account for login
@@ -16,9 +18,9 @@ import com.hqsolution.hqserver.client.data.helper.ApplicationDataHelper;
  */
 public class CreateAccountActivity extends Activity {
 
-	EditText name = (EditText) this.findViewById(R.id.txtName);
-	EditText password = (EditText) this.findViewById(R.id.txtPassword);
-	EditText email = (EditText) this.findViewById(R.id.txtEmail);
+	private EditText name = null;
+	private EditText password = null;
+	private EditText email = null;
 	private ProgressDialog progressDialog;
 	ApplicationDataHelper dataHelper;
 	
@@ -26,9 +28,15 @@ public class CreateAccountActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		dataHelper = new ApplicationDataHelper(this);
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.create_account_screen);
 		setTitle(R.string.create_account_title);
-
+		name = (EditText) this.findViewById(R.id.txtName);
+		password = (EditText) this.findViewById(R.id.txtPassword);
+		email = (EditText) this.findViewById(R.id.txtEmail);
+		
+		Button but = (Button)this.findViewById(R.id.btnCreateAccount);
+		but.setOnClickListener(new OnClickCreateAccountListener(this));
 	}
 
 	public EditText getName() {
@@ -44,7 +52,8 @@ public class CreateAccountActivity extends Activity {
 	}
 	
 	public ProgressDialog showProgressDialog() {
-		return ProgressDialog.show(this, "Waiting", "Please wait saving account ...");
+		progressDialog =  ProgressDialog.show(this, "Waiting", "Please wait saving account ...");
+		return progressDialog;
 	}
 	
 	public ProgressDialog getProgressDialog() {
