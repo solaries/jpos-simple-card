@@ -5,14 +5,14 @@ import org.jpos.iso.ISOMsg;
 
 import com.hqsolution.hqserver.app.common.EntityType;
 import com.hqsolution.hqserver.app.common.TaskCodeDefinition;
-import com.hqsolution.hqserver.app.dto.AccountLogin;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.app.dto.FlexibleTask;
 import com.hqsolution.hqserver.app.pack.ObjectPackMessage;
 import com.hqsolution.hqserver.client.factory.IsoMessageBuilder;
 
 public class AccountCreateProcessor extends RequestProcessor {
 
-	public AccountCreateProcessor(AccountLogin accountLogin) {
+	public AccountCreateProcessor(HQAccount accountLogin) {
 		super();
 		FlexibleTask flexibleTask = new FlexibleTask(
 				TaskCodeDefinition.ADD_ACCOUNT, accountLogin);

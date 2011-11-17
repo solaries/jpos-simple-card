@@ -10,5 +10,7 @@ import com.hqsolution.hqserver.app.dto.BankAccount;
  *
  */
 public interface FinancialRequest {
+
 	boolean saveUserInfo(HQAccount account);
+
 }

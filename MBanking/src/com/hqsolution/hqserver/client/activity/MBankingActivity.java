@@ -1,7 +1,5 @@
 package com.hqsolution.hqserver.client.activity;
 
-import com.hqsolution.hqserver.client.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 

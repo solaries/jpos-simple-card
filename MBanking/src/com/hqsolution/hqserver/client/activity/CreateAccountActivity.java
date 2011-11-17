@@ -5,8 +5,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.EditText;
 
-import com.hqsolution.hqserver.app.dto.AccountLogin;
-import com.hqsolution.hqserver.client.R;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.client.data.helper.ApplicationDataHelper;
 
 /**
@@ -22,6 +21,7 @@ public class CreateAccountActivity extends Activity {
 	EditText email = (EditText) this.findViewById(R.id.txtEmail);
 	private ProgressDialog progressDialog;
 	ApplicationDataHelper dataHelper;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		dataHelper = new ApplicationDataHelper(this);
@@ -51,7 +51,7 @@ public class CreateAccountActivity extends Activity {
 		return progressDialog;
 	}
 	
-	public void save(AccountLogin accountLogin){
+	public void save(HQAccount accountLogin){
 		this.dataHelper.insertAccountLogin(accountLogin);
 	}
 	

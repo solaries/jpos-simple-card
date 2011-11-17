@@ -5,9 +5,6 @@ package com.hqsolution.hqserver.client.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hqsolution.hqserver.client.R;
-import com.hqsolution.hqserver.client.app.util.AppUtil;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +12,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.hqsolution.hqserver.client.app.util.AppUtil;
 
 public class MainScreenActivity extends ListActivity {
 	private static final int ACTIVITY_ADD_BANK_ACCOUNT = 3;

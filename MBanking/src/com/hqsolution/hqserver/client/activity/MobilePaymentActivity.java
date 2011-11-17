@@ -1,16 +1,14 @@
 package com.hqsolution.hqserver.client.activity;
 
 
-import com.hqsolution.hqserver.client.R;
-import com.hqsolution.hqserver.client.listener.OnLoginClickListener;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
+
+import com.hqsolution.hqserver.client.listener.OnLoginClickListener;
 
 /**
  * First Activity 

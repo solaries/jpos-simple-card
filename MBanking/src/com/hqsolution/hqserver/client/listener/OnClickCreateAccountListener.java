@@ -1,6 +1,6 @@
 package com.hqsolution.hqserver.client.listener;
 
-import com.hqsolution.hqserver.app.dto.AccountLogin;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.client.activity.CreateAccountActivity;
 import com.hqsolution.hqserver.client.common.FinancialRequest;
 import com.hqsolution.hqserver.client.common.FinancialRequestFacade;
@@ -23,8 +23,8 @@ public class OnClickCreateAccountListener implements View.OnClickListener,
 
 	public void run() {
 		FinancialRequest facade = FinancialRequestFacade.getInstance();
-		AccountLogin login = new AccountLogin();
-		login.setFullname(activity.getName().getText().toString());
+		HQAccount login = new HQAccount();
+		login.setFullName(activity.getName().getText().toString());
 		login.setEmail(activity.getEmail().getText().toString());
 		login.setPassword(activity.getPassword().getText().toString());
 		if(facade.saveUserInfo(login)){

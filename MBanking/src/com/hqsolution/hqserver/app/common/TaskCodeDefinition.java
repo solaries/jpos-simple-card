@@ -2,6 +2,8 @@ package com.hqsolution.hqserver.app.common;
 
 import com.hqsolution.hqserver.app.dto.HQAccount;
 
+
+
 public class TaskCodeDefinition {
 	/**
 	 * Cast to {@link HQAccount}

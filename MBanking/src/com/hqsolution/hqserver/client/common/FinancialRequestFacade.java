@@ -28,6 +28,7 @@ public class FinancialRequestFacade {
 			
 		}
 		
+
 		public boolean saveUserInfo(HQAccount account) {
 			AccountCreateProcessor processor = new AccountCreateProcessor(account);
 			processor.process();

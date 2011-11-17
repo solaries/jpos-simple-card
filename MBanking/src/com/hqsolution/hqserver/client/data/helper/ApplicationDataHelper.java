@@ -1,6 +1,6 @@
 package com.hqsolution.hqserver.client.data.helper;
 
-import com.hqsolution.hqserver.app.dto.AccountLogin;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -33,9 +33,9 @@ public class ApplicationDataHelper extends SQLiteOpenHelper {
 		// version exists
 	}
 
-	public long insertAccountLogin(AccountLogin accountLogin) {
+	public long insertAccountLogin(HQAccount accountLogin) {
 		ContentValues cv = new ContentValues();
-		cv.put("name", accountLogin.getFullname());
+		cv.put("name", accountLogin.getFullName());
 		cv.put("password", accountLogin.getPassword());
 		cv.put("email", accountLogin.getEmail());
 		long newid = getWritableDatabase().insert("account_info", "name", cv);
