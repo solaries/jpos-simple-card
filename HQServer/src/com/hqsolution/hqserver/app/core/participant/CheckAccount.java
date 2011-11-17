@@ -2,7 +2,9 @@ package com.hqsolution.hqserver.app.core.participant;
 
 import java.io.Serializable;
 
+import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
+import org.jpos.iso.ISOUtil;
 import org.jpos.transaction.Context;
 import org.jpos.transaction.TransactionParticipant;
 
@@ -35,6 +37,12 @@ public class CheckAccount implements TransactionParticipant {
 		/** get message from context **/
 		ISOMsg msg = (ISOMsg)ctx.get(SystemConstant.REQUEST);
 		msg.dump(System.out, "");
+		try {
+			System.out.println(ISOUtil.hexString(msg.pack()));
+		} catch (ISOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		/*
 		/** Get connection from context 

@@ -2,7 +2,6 @@ package com.hqsolution.hqserver.app.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Iterator;
 
 import org.apache.commons.pool.BasePoolableObjectFactory;
 import org.apache.commons.pool.ObjectPool;
@@ -13,7 +12,7 @@ import com.hqsolution.hqserver.app.common.BaseConnectionWrapper;
 import com.hqsolution.hqserver.app.common.DatabaseConnection;
 
 /**
- * Create Connection object for My Sql pool.
+ * Create Connection object for MySql pool.
  * 
  * @author HUNGPT
  * 

@@ -6,6 +6,7 @@ import java.io.Serializable;
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOSource;
+import org.jpos.iso.ISOUtil;
 import org.jpos.iso.ISOFilter.VetoException;
 import org.jpos.transaction.AbortParticipant;
 import org.jpos.transaction.Context;
@@ -78,12 +79,11 @@ public class SendResponse implements AbortParticipant {
 				msgResponse.set(0,"0210");
 				msgResponse.set(3,(String)msg.getValue(3));
 				msgResponse.set(11,(String)msg.getValue(11));
-				msgResponse.set(41,(String)msg.getValue(41));
-				msgResponse.set(42,(String)msg.getValue(42));
+				//msgResponse.set(41,(String)msg.getValue(41));
+				//msgResponse.set(42,(String)msg.getValue(42));
 				msgResponse.set(39, "00");
-				/*	String field48Value = ISOUtil.hexString(msg.getComponent(48).getBytes());
-				msgResponse.set(48,ISOUtil.hex2byte(field48Value));
-				if(rc == null || "00".equals(rc)) {
+				msgResponse.set(48,msg.getComponent(48).getBytes());
+				/*if(rc == null || "00".equals(rc)) {
 					msgResponse.set(39, "00");
 				}
 				else if(rc != null) {

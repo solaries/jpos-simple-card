@@ -22,7 +22,7 @@ public class MySqlConnectionPool extends QBeanSupport {
 	
 	private ObjectPool pool;
 	
-	private MySqlConnectionPool() {
+	public MySqlConnectionPool() {
 		super();
 	}
 	
@@ -58,7 +58,7 @@ public class MySqlConnectionPool extends QBeanSupport {
 	 * Initialize for MySql Connection Pool.
 	 * @return <code>ObjectPool</code> Connection after was initialized.
 	 */
-	public ObjectPool initMySqlConnectionPool() {
+	private ObjectPool initMySqlConnectionPool() {
 		
         String host = cfg.get("host");
         String port = cfg.get("port");
