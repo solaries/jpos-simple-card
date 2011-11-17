@@ -30,14 +30,23 @@ public class ObjectUnPackMessage extends CommonUnPackMessage {
 			return obj;
 		}
 		try {
-			// get type(2 bytes) - len (4 bytes)- object
+			/**
+			 *  Detach data length
+			 *  Data after detach data length =  type(2 bytes) + length (4 bytes) + object
+			 */
 			byte[] ba = unpack();
+			
+			/** Detach Object Type*/
 			List<byte[]> list = MessageUtil.cutByteArray(ba, 2);
 			this.objectType = MessageUtil.byteArrayToShort(list.get(0));
 			byte[] tmpObjAndLen = list.get(1);
+			
+			/**Detach object length*/
 			list = MessageUtil.cutByteArray(tmpObjAndLen, 4);
 			this.objLength = MessageUtil.byteArrayToInt(list.get(0));
 			byte[] obj = list.get(1);
+			
+			/**Get object data */
 			this.obj = MessageUtil.convertByteArrayToObject(obj);
 			return this.obj;
 		} catch (IOException e) {

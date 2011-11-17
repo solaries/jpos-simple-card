@@ -1,7 +1,7 @@
 package com.hqsolution.hqserver.client.common;
 
 
-import com.hqsolution.hqserver.app.dto.AccountLogin;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.app.dto.BankAccount;
 import com.hqsolution.hqserver.client.factory.IsoMessageBuilder;
 import com.hqsolution.hqserver.client.processor.AccountCreateProcessor;
@@ -28,8 +28,8 @@ public class FinancialRequestFacade {
 			
 		}
 		
-		public boolean saveUserInfo(AccountLogin accountLogin) {
-			AccountCreateProcessor processor = new AccountCreateProcessor(accountLogin);
+		public boolean saveUserInfo(HQAccount account) {
+			AccountCreateProcessor processor = new AccountCreateProcessor(account);
 			processor.process();
 			return false;
 		}

@@ -17,8 +17,8 @@ public class CommonUnPackMessage{
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Data is needed to unpack what was constructed in <code>CommonUnPackMessage</code>
+	 * @return byte[] Byte array data after unpacking.
 	 */
 	public byte[] unpack() {
 		List<byte[]> list = MessageUtil.cutByteArray(data, 4);

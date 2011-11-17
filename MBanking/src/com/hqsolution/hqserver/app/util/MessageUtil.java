@@ -18,6 +18,11 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.BinaryCodec;
 import org.apache.commons.codec.binary.Hex;
 
+/**
+ * Utility class for Message.
+ * @author Quan Le
+ *
+ */
 public class MessageUtil {
 
 	static final byte[] HEX_CHAR_TABLE = { (byte) '0', (byte) '1', (byte) '2',

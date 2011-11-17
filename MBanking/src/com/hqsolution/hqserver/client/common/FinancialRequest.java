@@ -1,6 +1,6 @@
 package com.hqsolution.hqserver.client.common;
 
-import com.hqsolution.hqserver.app.dto.AccountLogin;
+import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.app.dto.BankAccount;
 
 /**
@@ -10,5 +10,5 @@ import com.hqsolution.hqserver.app.dto.BankAccount;
  *
  */
 public interface FinancialRequest {
-	boolean saveUserInfo(AccountLogin accountLogin);
+	boolean saveUserInfo(HQAccount account);
 }

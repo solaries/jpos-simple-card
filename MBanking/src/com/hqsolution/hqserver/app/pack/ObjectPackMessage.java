@@ -6,7 +6,7 @@ import java.util.List;
 import com.hqsolution.hqserver.app.util.MessageUtil;
 
 /**
- * 
+ * This class is aim to pack an object
  * @author Anh Quan
  * 
  */
@@ -26,10 +26,16 @@ public class ObjectPackMessage extends CommonPackMessage {
 		process();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public byte[] pack() {
 		return data;
 	}
 
+	/**
+	 * Data = data_length + object type + Object length + Object
+	 */
 	protected void process() {
 		try {
 			byte[] bytes = MessageUtil.convertObjectToByteArray(obj);

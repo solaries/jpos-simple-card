@@ -1,6 +1,5 @@
 package com.hqsolution.hqserver.app.util;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -10,6 +9,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+/**
+ * Zip utility.
+ * @author Quan Le
+ *
+ */
 public class ZipUtil {
 	public static byte[] compress(String str) {
 		try {

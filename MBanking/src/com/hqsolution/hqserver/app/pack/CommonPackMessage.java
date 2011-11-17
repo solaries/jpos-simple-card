@@ -1,10 +1,13 @@
 package com.hqsolution.hqserver.app.pack;
 
 
-import java.util.List;
-
 import com.hqsolution.hqserver.app.util.MessageUtil;
 
+/**
+ * 
+ * @author Quan Le
+ *
+ */
 public class CommonPackMessage{
 	
 	protected byte[] data = {};
@@ -18,11 +21,18 @@ public class CommonPackMessage{
 		process();
 	}
 
+	/**
+	 * Packing process is executed when constructing <code>CommonPackMessage</code>
+	 * @return data after packing.
+	 */
 	public byte[] pack() {
 		return data;
 	}
 
-
+	/**
+	 * Attach a data length to ahead of data.
+	 * return data = data_length + data
+	 */
 	protected void process() {
 		int dataLen = data.length;
 		byte[] lenBytes = MessageUtil.bindToHead(

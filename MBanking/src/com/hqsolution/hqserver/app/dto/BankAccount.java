@@ -1,13 +1,7 @@
 package com.hqsolution.hqserver.app.dto;
 
 
-import java.io.IOException;
 import java.io.Serializable;
-
-import org.jpos.iso.ISOException;
-import org.jpos.iso.ISOMsg;
-
-import com.hqsolution.hqserver.app.util.MessageUtil;
 
 /**
  * 
