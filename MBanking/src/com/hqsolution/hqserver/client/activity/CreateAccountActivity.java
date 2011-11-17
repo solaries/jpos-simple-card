@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.hqsolution.hqserver.app.dto.AccountLogin;
 import com.hqsolution.hqserver.client.R;
 import com.hqsolution.hqserver.client.data.helper.ApplicationDataHelper;
 
@@ -48,6 +49,10 @@ public class CreateAccountActivity extends Activity {
 	
 	public ProgressDialog getProgressDialog() {
 		return progressDialog;
+	}
+	
+	public void save(AccountLogin accountLogin){
+		this.dataHelper.insertAccountLogin(accountLogin);
 	}
 	
 	@Override

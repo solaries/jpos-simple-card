@@ -4,9 +4,9 @@ package com.hqsolution.hqserver.client.processor;
 import org.jpos.iso.ISOMsg;
 
 import com.hqsolution.hqserver.app.common.EntityType;
-import com.hqsolution.hqserver.app.common.FlexibleTask;
 import com.hqsolution.hqserver.app.common.TaskCodeDefinition;
 import com.hqsolution.hqserver.app.dto.AccountLogin;
+import com.hqsolution.hqserver.app.dto.FlexibleTask;
 import com.hqsolution.hqserver.app.pack.ObjectPackMessage;
 import com.hqsolution.hqserver.client.factory.IsoMessageBuilder;
 

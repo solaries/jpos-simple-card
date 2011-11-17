@@ -2,6 +2,12 @@ package com.hqsolution.hqserver.app.dto;
 
 import java.io.Serializable;
 
+/**
+ * To transfer object and taskcode
+ * 
+ * @author Quan
+ *
+ */
 public class FlexibleTask implements Serializable{
 	
 	/**

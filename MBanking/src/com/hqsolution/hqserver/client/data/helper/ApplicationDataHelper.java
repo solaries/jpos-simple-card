@@ -33,12 +33,13 @@ public class ApplicationDataHelper extends SQLiteOpenHelper {
 		// version exists
 	}
 
-	public void insert(AccountLogin accountLogin) {
+	public long insertAccountLogin(AccountLogin accountLogin) {
 		ContentValues cv = new ContentValues();
 		cv.put("name", accountLogin.getFullname());
 		cv.put("password", accountLogin.getPassword());
 		cv.put("email", accountLogin.getEmail());
 		long newid = getWritableDatabase().insert("account_info", "name", cv);
+		return newid;
 	}
 
 }

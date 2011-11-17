@@ -58,6 +58,8 @@ public class IsoMessageBuilder {
 		}
 		return this;
 	}
+	
+	
 
 	public IsoMessageBuilder rebuild(ISOMsg isoMsg) {
 		this.isoMsg = isoMsg;

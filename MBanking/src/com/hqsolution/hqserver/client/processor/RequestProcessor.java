@@ -25,6 +25,10 @@ public abstract class RequestProcessor {
 	private byte[] field48;
 
 	public RequestProcessor() {
+		init();
+	}
+	
+	private void init(){
 		ISOPackager pack = PackagerFactory.getPackager();
 		this.msgSent = IsoMessageBuilder.createBuilder()
 				.setMTI("0200")

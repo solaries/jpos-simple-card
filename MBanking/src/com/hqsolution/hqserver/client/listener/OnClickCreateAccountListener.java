@@ -27,7 +27,11 @@ public class OnClickCreateAccountListener implements View.OnClickListener,
 		login.setFullname(activity.getName().getText().toString());
 		login.setEmail(activity.getEmail().getText().toString());
 		login.setPassword(activity.getPassword().getText().toString());
-		facade.saveUserInfo(login);
+		if(facade.saveUserInfo(login)){
+			//save user info into phone
+			activity.save(login);
+		}
+		// close dialog
 		activity.getProgressDialog().dismiss();
 	}
 
