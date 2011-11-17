@@ -1,4 +1,4 @@
-package com.hqsolution.hqserver.app.common;
+package com.hqsolution.hqserver.app.dto;
 
 import java.io.Serializable;
 
