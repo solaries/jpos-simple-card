@@ -1,6 +1,6 @@
 SET JPOSEE=E:\\Nam4\\LuanVan\\JProject\\jposee
 SET JPOSEE_MODULE=E:\\Nam4\\LuanVan\\JProject\\jposee\\modules
-SET HQSERVER=E:\\Nam4\\LuanVan\\JProject\\HQServer
+SET HQSERVER=E:\\CSC Project\\Internal_Project\\HQServer\\build
 rmdir "%JPOSEE_MODULE%\\HQServer" /s /q
 cd "%JPOSEE_MODULE%"
 mkdir "HQServer"
