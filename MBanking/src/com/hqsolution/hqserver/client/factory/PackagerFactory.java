@@ -12,7 +12,7 @@ public class PackagerFactory {
     public static ISOPackager getPackager() {
         ISOPackager packager = null;
         try {
-            String filename = "iso87ascii.xml";
+            String filename = "./cfg/iso87binary.xml";
             InputStream is = null;
             is = PackagerFactory.class.getResourceAsStream(filename);
             packager = new GenericPackager(is);
