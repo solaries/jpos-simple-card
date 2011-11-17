@@ -59,20 +59,5 @@ public abstract class RequestProcessor {
 		field48 = msgReceived.getBytes(48);
 	}
 
-	public byte[] getField3() {
-		return field3;
-	}
-
-	public byte[] getField11() {
-		return field11;
-	}
-
-	public Date getField11Date() {
-		return MessageUtil.sixBytesToDate(field11);
-	}
-
-	public byte[] getField48() {
-		return field48;
-	}
 
 }
