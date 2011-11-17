@@ -14,9 +14,10 @@
 
 	<property name="dir.src" value="src" />
 	<property name="dir.lib" value="lib" />
-	<property name="dir.src.dao" value="${dir.src}/com/hqsolution/hqserver/app/dao" />
+	<property name="dir.src.app" value="${dir.src}/com/hqsolution/hqserver/app" />
 	<property name="dir.build" value="build" />
 	<property name="dir.dist" value="../HQServer/dist" />
+	<property name="common_client.jar" value="common_client.jar"></property>
 
 	<path id="buildClasspath">
 		<fileset dir="${dir.lib}">
@@ -32,17 +33,18 @@
 
 	<!-- Creates the output directories -->
 	<target name="prepareCommonFiles" depends="cleanCommonFiles">
+		<delete file="${common_client.jar}"></delete>
 		<mkdir dir="${dir.build}" />
 	</target>
 
 	<target name="buildCommonFiles" depends="prepareCommonFiles">
-		<javac srcdir="${dir.src.dao}" destdir="${dir.build}">
+		<javac srcdir="${dir.src.app}" destdir="${dir.build}">
 			<classpath refid="buildClasspath" />
 		</javac>
 	</target>
 
 	<target name="buildJarCommonFiles" depends="buildCommonFiles">
-		<jar jarfile="${dir.dist}/common_file.jar" basedir="${dir.build}" />
+		<jar jarfile="${dir.dist}/${common_client.jar}" basedir="${dir.build}" />
 	</target>
 
 
