@@ -1,7 +1,5 @@
 package com.hqsolution.hqserver.client.factory;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import org.jpos.iso.ISOException;
@@ -12,7 +10,7 @@ public class PackagerFactory {
     public static ISOPackager getPackager() {
         ISOPackager packager = null;
         try {
-            String filename = "./cfg/iso87binary.xml";
+            String filename = "/cfg/iso87binary.xml";
             InputStream is = null;
             is = PackagerFactory.class.getResourceAsStream(filename);
             packager = new GenericPackager(is);
@@ -20,6 +18,7 @@ public class PackagerFactory {
         catch (ISOException e) {
             e.printStackTrace();
         } catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         return packager;
