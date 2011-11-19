@@ -7,6 +7,7 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.client.activity.CreateAccountActivity;
+import com.hqsolution.hqserver.client.channel.NACChannel;
 import com.hqsolution.hqserver.client.processor.AccountCreateProcessor;
 
 /**
@@ -38,13 +39,15 @@ public class CreateAccountActivityTest extends
 	 * Test method for {@link com.hqsolution.hqserver.client.activity.CreateAccountActivity#save(com.hqsolution.hqserver.app.dto.HQAccount)}.
 	 */
 	public void testSave() {
-		HQAccount login = new HQAccount();
+		/*HQAccount login = new HQAccount();
 		login.setEmail("lmquan008@gmail.com");
 		login.setPassword("1234566");
 		login.setFullName("Le Minh Quan");
 		
 		AccountCreateProcessor processor = new AccountCreateProcessor(login);
-		processor.process();
+		processor.process();*/
+		
+		NACChannel.main(new String[]{});
 	}
 
 }
