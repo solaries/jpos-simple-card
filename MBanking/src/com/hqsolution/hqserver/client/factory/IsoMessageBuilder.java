@@ -53,7 +53,6 @@ public class IsoMessageBuilder {
 		try {
 			isoMsg.set(48, processionCode);
 		} catch (ISOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return this;
