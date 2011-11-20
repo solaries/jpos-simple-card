@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOPackager;
-import org.jpos.iso.packager.GenericPackager;
+import org.jpos.iso.packager.HQGenericPackager;
 
 public class PackagerFactory {
     public static ISOPackager getPackager() {
@@ -13,7 +13,7 @@ public class PackagerFactory {
             String filename = "/cfg/iso87binary.xml";
             InputStream is = null;
             is = PackagerFactory.class.getResourceAsStream(filename);
-            packager = new GenericPackager(is);
+            packager = new HQGenericPackager(is);
         } 
         catch (ISOException e) {
             e.printStackTrace();
