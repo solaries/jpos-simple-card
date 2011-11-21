@@ -4,19 +4,17 @@ package com.hqsolution.hqserver.client.processor;
 import java.io.IOException;
 import java.util.Date;
 
-import org.jpos.iso.ISOChannel;
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
-import org.jpos.iso.ISOUtil;
-import org.jpos.iso.channel.NACChannel;
 
 import com.hqsolution.hqserver.app.util.MessageUtil;
+import com.hqsolution.hqserver.client.channel.NACChannel;
 import com.hqsolution.hqserver.client.factory.IsoMessageBuilder;
 import com.hqsolution.hqserver.client.factory.PackagerFactory;
 
 public abstract class RequestProcessor {
-	private static final String SERVER = "localhost";
+	private static final String SERVER = "192.168.1.4";
 	private static final int PORT = 9800;
 
 	protected ISOMsg msgSent;
@@ -44,6 +42,7 @@ public abstract class RequestProcessor {
 				.setField3("000000")
 				.setField11(new Date())
 				.build();
+		msgSent.setPackager(packager);
 	}
 
 	public ISOMsg getMsgReceived() {
@@ -52,17 +51,17 @@ public abstract class RequestProcessor {
 
 	public void process() {
 		try {
-			ISOChannel channel = new NACChannel(SERVER, PORT,packager, header);
+			NACChannel channel = new NACChannel(SERVER, PORT,packager, header);
 			channel.connect();
 			
 			//testing only
-			System.out.println(ISOUtil.hexString(msgSent.pack()));
+			//System.out.println(ISOUtil.hexString(msgSent.pack()));
 			
 			channel.send(msgSent);
 			msgReceived = channel.receive();
 			
 			//testing only
-			System.out.println(ISOUtil.hexString(msgReceived.pack()));
+			//System.out.println(ISOUtil.hexString(msgReceived.pack()));
 			
 			channel.disconnect();
 		} catch (IOException e) {

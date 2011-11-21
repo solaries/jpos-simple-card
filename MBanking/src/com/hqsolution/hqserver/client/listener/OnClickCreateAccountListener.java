@@ -23,14 +23,19 @@ public class OnClickCreateAccountListener implements View.OnClickListener,
 
 	public void run() {
 		FinancialRequest facade = FinancialRequestFacade.getInstance();
+		//HQAccount login = new HQAccount();
+		//login.setFullName(activity.getName().getText().toString());
+		//login.setEmail(activity.getEmail().getText().toString());
+		//login.setPassword(activity.getPassword().getText().toString());
 		HQAccount login = new HQAccount();
-		login.setFullName(activity.getName().getText().toString());
-		login.setEmail(activity.getEmail().getText().toString());
-		login.setPassword(activity.getPassword().getText().toString());
-		/*if(facade.saveUserInfo(login)){
+		login.setEmail("lmquan008@gmail.com");
+		login.setPassword("1234566");
+		login.setFullName("Le Minh Quan");
+		
+		if(facade.saveUserInfo(login)){
 			//save user info into phone
 			activity.save(login);
-		}*/
+		}
 		activity.save(login);
 		// close dialog
 		activity.getProgressDialog().dismiss();
