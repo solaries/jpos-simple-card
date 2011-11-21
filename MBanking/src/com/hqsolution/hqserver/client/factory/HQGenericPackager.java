@@ -8,6 +8,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.jpos.iso.ISOException;
 import org.jpos.iso.packager.GenericPackager;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
@@ -24,7 +25,8 @@ public class HQGenericPackager extends GenericPackager {
 	 *            The XML field description file
 	 */
 	public HQGenericPackager(String filename) throws ISOException {
-		super(filename);
+		this();
+		readFile(filename);
 	}
 
 	/**
@@ -35,7 +37,8 @@ public class HQGenericPackager extends GenericPackager {
 	 *            The XML field description InputStream
 	 */
 	public HQGenericPackager(InputStream input) throws ISOException {
-		super(input);
+		this();
+		readFile(input);
 	}
 
 	protected XMLReader createXMLReader() throws SAXException {
@@ -45,7 +48,6 @@ public class HQGenericPackager extends GenericPackager {
 		try {
 			sp = spf.newSAXParser();
 			reader = sp.getXMLReader();
-			reader.setFeature("http://xml.org/sax/features/validation", true);
 			GenericContentHandler handler = new GenericContentHandler();
 			reader.setContentHandler(handler);
 			reader.setErrorHandler(handler);
@@ -56,4 +58,42 @@ public class HQGenericPackager extends GenericPackager {
 		
 		return reader;
 	}
+	
+	/**
+     * Parse the field descriptions from an XML file.
+     *
+     * <pre>
+     * Uses the sax parser specified by the system property 'sax.parser'
+     * The default parser is org.apache.crimson.parser.XMLReaderImpl
+     * </pre>
+     * @param filename The XML field description file
+     */
+    public void readFile(String filename) throws ISOException
+    {
+        try {
+            createXMLReader().parse(filename);  
+        } 
+        catch (Exception e) {
+            throw new ISOException(e);
+        }
+    }
+    
+    /**
+     * Parse the field descriptions from an XML InputStream.
+     *
+     * <pre>
+     * Uses the sax parser specified by the system property 'sax.parser'
+     * The default parser is org.apache.crimson.parser.XMLReaderImpl
+     * </pre>
+     * @param input The XML field description InputStream
+     */
+    public void readFile(InputStream input) throws ISOException
+    {
+        try {
+            createXMLReader().parse(new InputSource(input));
+        } 
+        catch (Exception e) {
+            throw new ISOException(e);
+        }
+    }
 }
