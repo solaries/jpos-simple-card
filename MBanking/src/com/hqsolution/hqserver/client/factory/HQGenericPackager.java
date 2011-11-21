@@ -1,10 +1,17 @@
 package com.hqsolution.hqserver.client.factory;
 
-import org.jpos.iso.ISOBasePackager;
-import org.jpos.iso.ISOException;
-import org.jpos.iso.packager.GenericPackager.GenericContentHandler;
+import java.io.InputStream;
 
-public class HQGenericPackager extends ISOBasePackager {
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.jpos.iso.ISOException;
+import org.jpos.iso.packager.GenericPackager;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+
+public class HQGenericPackager extends GenericPackager {
 
 	public HQGenericPackager() throws ISOException {
 		super();
@@ -32,13 +39,21 @@ public class HQGenericPackager extends ISOBasePackager {
 	}
 
 	protected XMLReader createXMLReader() throws SAXException {
+		XMLReader reader = null;
 		SAXParserFactory spf = SAXParserFactory.newInstance();
-		SAXParser sp = spf.newSAXParser();
-		XMLReader xr = sp.getXMLReader();
-		reader.setFeature("http://xml.org/sax/features/validation", true);
-		GenericContentHandler handler = new GenericContentHandler();
-		reader.setContentHandler(handler);
-		reader.setErrorHandler(handler);
+		SAXParser sp;
+		try {
+			sp = spf.newSAXParser();
+			reader = sp.getXMLReader();
+			reader.setFeature("http://xml.org/sax/features/validation", true);
+			GenericContentHandler handler = new GenericContentHandler();
+			reader.setContentHandler(handler);
+			reader.setErrorHandler(handler);
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return reader;
 	}
 }

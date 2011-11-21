@@ -17,7 +17,7 @@ public class IsoMessageBuilder {
 
 	private ISOMsg isoMsg = new ISOMsg();
 
-	private IsoMessageBuilder() {
+	public IsoMessageBuilder() {
 
 	}
 	

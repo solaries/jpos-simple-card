@@ -4,7 +4,6 @@ import java.io.InputStream;
 
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOPackager;
-import org.jpos.iso.packager.HQGenericPackager;
 
 public class PackagerFactory {
     public static ISOPackager getPackager() {
