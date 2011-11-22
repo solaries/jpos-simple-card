@@ -5,10 +5,14 @@ import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InterruptedIOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.net.SocketException;
 import java.util.Date;
 
+import org.jpos.iso.ISOClientSocketFactory;
 import org.jpos.iso.ISOException;
+import org.jpos.iso.ISOFilter;
 import org.jpos.iso.ISOHeader;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
@@ -62,7 +66,7 @@ public class NACChannel {
 	public void connect() {
 		try {
 			// create socket and connect
-			sock = new java.net.Socket(serverIPname, serverPort);
+			sock = newSocket(serverIPname, serverPort);
 
 			if (timeout > 0) {
 				sock.setSoTimeout(timeout);
@@ -186,7 +190,7 @@ public class NACChannel {
 			m.setHeader(getDynamicHeader(header));
 			if (b.length > 0) // Ignore NULL messages
 				unpack(m, b);
-			
+
 			m.setDirection(ISOMsg.INCOMING);
 		} catch (ISOException e) {
 			throw e;
@@ -204,7 +208,7 @@ public class NACChannel {
 			throw e;
 		} catch (Exception e) {
 			throw new ISOException("unexpected exception", e);
-		} 
+		}
 		return m;
 	}
 
@@ -267,78 +271,99 @@ public class NACChannel {
 			throws IOException {
 		serverOut.write(b, offset, len);
 	}
-	
+
 	/**
-     * Reads in a message header.
-     *
-     * @param hLen The Length og the reader to read
-     * @return The header bytes that were read in
-     */
-    protected byte[] readHeader(int hLen) throws IOException {
-        byte[] header = new byte[hLen];
-        serverIn.readFully(header, 0, hLen);
-        return header;
-    }
-    
-    protected byte[] streamReceive() throws IOException {
-        return new byte[0];
-    }
-    
-    protected void getMessage (byte[] b, int offset, int len) throws IOException, ISOException { 
-        serverIn.readFully(b, offset, len);
-    }
-    
-    /** 
-     * Allow subclasses to override the Default header on
-     * incoming messages.
-     */
-    protected ISOHeader getDynamicHeader (byte[] image) {
-        return image != null ? 
-            new BaseHeader (image) : null;
-    }
-    
-    protected void unpack (ISOMsg m, byte[] b) throws ISOException {
-        m.unpack (b);
-    }
-    
-    public static void main(String[] args){
-    	byte[] header  = new byte[] {0x60, 0x00, 0x01, 0x00, 0x02 }; 
-    	NACChannel clientChanel = new NACChannel("localhost", 9800, PackagerFactory.getPackager(), header);
-    	clientChanel.connect();
-    	
-    	ISOMsg msg = IsoMessageBuilder.createBuilder()
-		.setMTI("0200")
-		.setField3("000000")
-		.setField11(new Date())
-		.build();
-    	
-    	HQAccount login = new HQAccount();
+	 * Reads in a message header.
+	 * 
+	 * @param hLen
+	 *            The Length og the reader to read
+	 * @return The header bytes that were read in
+	 */
+	protected byte[] readHeader(int hLen) throws IOException {
+		byte[] header = new byte[hLen];
+		serverIn.readFully(header, 0, hLen);
+		return header;
+	}
+
+	protected byte[] streamReceive() throws IOException {
+		return new byte[0];
+	}
+
+	protected void getMessage(byte[] b, int offset, int len)
+			throws IOException, ISOException {
+		serverIn.readFully(b, offset, len);
+	}
+
+	/**
+	 * Allow subclasses to override the Default header on incoming messages.
+	 */
+	protected ISOHeader getDynamicHeader(byte[] image) {
+		return image != null ? new BaseHeader(image) : null;
+	}
+
+	protected void unpack(ISOMsg m, byte[] b) throws ISOException {
+		m.unpack(b);
+	}
+
+	public static void main(String[] args) {
+		byte[] header = new byte[] { 0x60, 0x00, 0x01, 0x00, 0x02 };
+		NACChannel clientChanel = new NACChannel("localhost", 9800,
+				PackagerFactory.getPackager(), header);
+		clientChanel.connect();
+
+		ISOMsg msg = IsoMessageBuilder.createBuilder().setMTI("0200")
+				.setField3("000000").setField11(new Date()).build();
+
+		HQAccount login = new HQAccount();
 		login.setEmail("lmquan008@gmail.com");
 		login.setPassword("1234566");
 		login.setFullName("Le Minh Quan");
-		
-    	FlexibleTask flexibleTask = new FlexibleTask(
+
+		FlexibleTask flexibleTask = new FlexibleTask(
 				TaskCodeDefinition.ADD_ACCOUNT, login);
 		ObjectPackMessage message = new ObjectPackMessage(flexibleTask,
 				EntityType.FLEXIBLE_TASK);
 		// for field 11
 		byte[] data = message.pack();
-		IsoMessageBuilder.createBuilder().rebuild(msg)
-				.setField48(data).build();
-		
+		IsoMessageBuilder.createBuilder().rebuild(msg).setField48(data).build();
+
 		try {
-			//testing only
+			// testing only
 			System.out.println(ISOUtil.hexString(msg.pack()));
-			
+
 			clientChanel.send(msg);
 			ISOMsg receive = clientChanel.receive();
-			
-			//testing only
+
+			// testing only
 			System.out.println(ISOUtil.hexString(receive.pack()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ISOException e) {
 			e.printStackTrace();
 		}
-    }
+	}
+
+	/**
+	 * @param host
+	 *            remote host
+	 * @param port
+	 *            remote port
+	 * @throws IOException
+	 *             on error
+	 * 
+	 *             Use Socket factory if exists. If it is missing create a
+	 *             normal socket
+	 * @see ISOClientSocketFactory
+	 * @return newly created socket
+	 */
+	protected Socket newSocket(String host, int port) throws IOException {
+		Socket s = new Socket();
+		if (timeout > 0) {
+			s.connect(new InetSocketAddress(host, port), timeout);
+			
+		} else {
+			s.connect(new InetSocketAddress(host, port));
+		}
+		return s;
+	}
 }
