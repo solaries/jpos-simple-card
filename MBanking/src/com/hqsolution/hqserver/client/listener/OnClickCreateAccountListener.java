@@ -1,18 +1,15 @@
 package com.hqsolution.hqserver.client.listener;
 
-import com.hqsolution.hqserver.app.dto.HQAccount;
-import com.hqsolution.hqserver.client.activity.CreateAccountActivity;
-import com.hqsolution.hqserver.client.common.FinancialRequest;
-import com.hqsolution.hqserver.client.common.FinancialRequestFacade;
-
-import android.accounts.Account;
 import android.app.ProgressDialog;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-public class OnClickCreateAccountListener implements View.OnClickListener,
-		Runnable {
+import com.hqsolution.hqserver.app.dto.HQAccount;
+import com.hqsolution.hqserver.client.activity.CreateAccountActivity;
+import com.hqsolution.hqserver.client.app.util.AppUtil;
+import com.hqsolution.hqserver.client.common.FinancialRequest;
+
+public class OnClickCreateAccountListener extends BaseClickListener{
 
 	private CreateAccountActivity activity;
 
@@ -21,30 +18,38 @@ public class OnClickCreateAccountListener implements View.OnClickListener,
 		this.activity = activity;
 	}
 
+	/**
+	 * run Asyn
+	 */
 	public void run() {
-		FinancialRequest facade = FinancialRequestFacade.getInstance();
-		//HQAccount login = new HQAccount();
-		//login.setFullName(activity.getName().getText().toString());
-		//login.setEmail(activity.getEmail().getText().toString());
-		//login.setPassword(activity.getPassword().getText().toString());
-		HQAccount login = new HQAccount();
-		login.setEmail("lmquan008@gmail.com");
-		login.setPassword("1234566");
-		login.setFullName("Le Minh Quan");
-		
-		if(facade.saveUserInfo(login)){
-			//save user info into phone
+		try {
+			FinancialRequest facade = FinancialRequest.Factory.newInstance();
+			HQAccount login = new HQAccount();
+			login.setFullName(activity.getName().getText().toString());
+			login.setEmail(activity.getEmail().getText().toString());
+			login.setPassword(activity.getPassword().getText().toString());
+			/*HQAccount login = new HQAccount();
+			login.setEmail("lmquan008@gmail.com");
+			login.setPassword("1234566");
+			login.setFullName("Le Minh Quan");*/
+			
+			if(facade.saveUserInfo(login)){
+				//save user info into phone
+				activity.save(login);
+			}
 			activity.save(login);
+			// close dialog
+			activity.getProgressDialog().dismiss();
+			activity.finish();
+		} catch (Exception e) {
+			e.printStackTrace();
+			activity.getProgressDialog().dismiss();
+			AppUtil.createExitOnErrorDialog(activity, e).show();
+
 		}
-		activity.save(login);
-		// close dialog
-		activity.getProgressDialog().dismiss();
 	}
 
 	public void onClick(View v) {
-		ProgressDialog pd = activity.showProgressDialog();
-		ProgressBar bar = new ProgressBar(activity);
-		Thread thread = new Thread(this);
-		thread.start();
+		
 	}
 }

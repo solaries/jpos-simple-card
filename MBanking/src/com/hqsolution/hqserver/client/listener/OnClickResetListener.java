@@ -2,15 +2,15 @@ package com.hqsolution.hqserver.client.listener;
 
 import android.view.View;
 
-import com.hqsolution.hqserver.client.activity.MobilePaymentActivity;
+import com.hqsolution.hqserver.client.activity.LoginActivity;
 
 public class OnClickResetListener implements View.OnClickListener{
 
-	private MobilePaymentActivity activity;
+	private LoginActivity activity;
 	
 	
 	
-	public OnClickResetListener(MobilePaymentActivity activity) {
+	public OnClickResetListener(LoginActivity activity) {
 		super();
 		this.activity = activity;
 	}

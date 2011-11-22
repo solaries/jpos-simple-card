@@ -16,17 +16,17 @@ import com.hqsolution.hqserver.client.listener.OnClickCreateAccountListener;
  * @author Quan
  * 
  */
-public class CreateAccountActivity extends Activity {
+public class CreateAccountActivity extends BaseHQActivity {
 
 	private EditText name = null;
 	private EditText password = null;
 	private EditText email = null;
-	private ProgressDialog progressDialog;
-	ApplicationDataHelper dataHelper;
+	
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		dataHelper = new ApplicationDataHelper(this);
+		
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.create_account_screen);
@@ -52,22 +52,14 @@ public class CreateAccountActivity extends Activity {
 	}
 	
 	public ProgressDialog showProgressDialog() {
-		progressDialog =  ProgressDialog.show(this, "Waiting", "Please wait saving account ...");
-		return progressDialog;
+		return showProgressDialog("Please wait saving account ...");
 	}
 	
-	public ProgressDialog getProgressDialog() {
-		return progressDialog;
-	}
 	
 	public void save(HQAccount accountLogin){
 		this.dataHelper.insertAccountLogin(accountLogin);
 	}
 	
-	@Override
-	protected void onDestroy() {
-		dataHelper.close();
-		super.onDestroy();
-	}
+	
 
 }

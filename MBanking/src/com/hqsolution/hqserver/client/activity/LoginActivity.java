@@ -18,7 +18,7 @@ import com.hqsolution.hqserver.client.listener.OnLoginClickListener;
  * @author Quan
  *
  */
-public class MobilePaymentActivity extends Activity {
+public class LoginActivity extends BaseHQActivity {
 	private static final int ACTIVITY_CREATE=2;
 	private static final int CREATE_ID = Menu.FIRST;
 	

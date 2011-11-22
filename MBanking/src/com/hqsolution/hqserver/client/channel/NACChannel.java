@@ -24,15 +24,16 @@ import com.hqsolution.hqserver.app.common.TaskCodeDefinition;
 import com.hqsolution.hqserver.app.dto.FlexibleTask;
 import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.app.pack.ObjectPackMessage;
+import com.hqsolution.hqserver.client.config.AppConfiguration;
 import com.hqsolution.hqserver.client.factory.IsoMessageBuilder;
 import com.hqsolution.hqserver.client.factory.PackagerFactory;
 
 public class NACChannel {
 	// server IP name
-	private String serverIPname = "127.0.0.1";
+	private String serverIPname = AppConfiguration.SERVER_NAME;
 
 	// server port number
-	private int serverPort = 9800;
+	private int serverPort = AppConfiguration.PORT;
 
 	// Socket object for communicating
 	private java.net.Socket sock = null;
@@ -54,6 +55,12 @@ public class NACChannel {
 	private boolean isConnected = false;
 
 	private static final int MAX_PACKAGE_LENGTH = 100000;
+	
+	public NACChannel(ISOPackager packager,
+			byte[] header) {
+		this.packager = packager;
+		this.header = header;
+	}
 
 	public NACChannel(String serverIP, int port, ISOPackager packager,
 			byte[] header) {

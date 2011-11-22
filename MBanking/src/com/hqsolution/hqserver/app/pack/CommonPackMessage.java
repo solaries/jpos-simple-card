@@ -4,6 +4,7 @@ package com.hqsolution.hqserver.app.pack;
 import com.hqsolution.hqserver.app.util.MessageUtil;
 
 /**
+ * to pack a data byte array message
  * 
  * @author Quan Le
  *

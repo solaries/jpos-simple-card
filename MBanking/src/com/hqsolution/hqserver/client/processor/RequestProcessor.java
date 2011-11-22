@@ -14,13 +14,10 @@ import com.hqsolution.hqserver.client.factory.IsoMessageBuilder;
 import com.hqsolution.hqserver.client.factory.PackagerFactory;
 
 public abstract class RequestProcessor {
-	private static final String SERVER = "192.168.1.4";
-	private static final int PORT = 9800;
 
 	protected ISOMsg msgSent;
 	protected ISOMsg msgReceived;
-	private byte[] field3;
-	private byte[] field11;
+	private byte[] field39;
 	private byte[] field48;
 	
 	/** Header is just meaning for NACChannel. Header is used for router. */
@@ -51,11 +48,8 @@ public abstract class RequestProcessor {
 
 	public void process() {
 		try {
-			NACChannel channel = new NACChannel(SERVER, PORT,packager, header);
+			NACChannel channel = new NACChannel(packager, header);
 			channel.connect();
-			
-			//testing only
-			//System.out.println(ISOUtil.hexString(msgSent.pack()));
 			
 			channel.send(msgSent);
 			msgReceived = channel.receive();
@@ -71,28 +65,21 @@ public abstract class RequestProcessor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		field3 = msgReceived.getBytes(3);
-
-		field11 = msgReceived.getBytes(11);
-
-		field48 = msgReceived.getBytes(48);
+		if(msgReceived != null){
+			throw new RuntimeException("Cannot receive message from server");
+		}
 	}
 
-	public byte[] getField3() {
-		return field3;
+	public byte[] getReceiveField39() {
+		if(field39 != null) return field39;
+		return msgReceived.getBytes(39);
+		
 	}
 
-	public byte[] getField11() {
-		return field11;
-	}
 
-	public Date getField11Date() {
-		return MessageUtil.sixBytesToDate(field11);
-	}
-
-	public byte[] getField48() {
-		return field48;
+	public byte[] getReceiveField48() {
+		if(field48 != null) return field48;
+		return msgReceived.getBytes(48);
 	}
 
 }

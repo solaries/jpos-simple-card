@@ -15,7 +15,7 @@ import android.widget.ListView;
 
 import com.hqsolution.hqserver.client.app.util.AppUtil;
 
-public class MainScreenActivity extends ListActivity {
+public class MainScreenActivity extends BaseHQListActivity {
 	private static final int ACTIVITY_ADD_BANK_ACCOUNT = 3;
 	
 	@Override

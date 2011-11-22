@@ -2,7 +2,12 @@ package com.hqsolution.hqserver.app.dto;
 
 import java.io.Serializable;
 
-
+/**
+ * Account to log in to application
+ * 
+ * @author QuanLe
+ *
+ */
 public class HQAccount implements Serializable {
 	/**
 	 * 

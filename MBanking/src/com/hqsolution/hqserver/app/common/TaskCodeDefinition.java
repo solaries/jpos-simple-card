@@ -2,7 +2,12 @@ package com.hqsolution.hqserver.app.common;
 
 import com.hqsolution.hqserver.app.dto.HQAccount;
 
-
+/**
+ * This is used to determine what to do at server
+ * 
+ * @author QuanLe
+ *
+ */
 
 public class TaskCodeDefinition {
 	/**

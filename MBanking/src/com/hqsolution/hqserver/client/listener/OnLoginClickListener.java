@@ -1,24 +1,55 @@
 package com.hqsolution.hqserver.client.listener;
 
-import com.hqsolution.hqserver.client.activity.CreateAccountActivity;
-import com.hqsolution.hqserver.client.activity.MainScreenActivity;
-import com.hqsolution.hqserver.client.activity.MobilePaymentActivity;
-
 import android.content.Intent;
 import android.view.View;
+import android.widget.EditText;
 
-public class OnLoginClickListener implements View.OnClickListener{
+import com.hqsolution.hqserver.client.activity.LoginActivity;
+import com.hqsolution.hqserver.client.activity.MainScreenActivity;
+import com.hqsolution.hqserver.client.activity.R;
+import com.hqsolution.hqserver.client.app.util.AppUtil;
+import com.hqsolution.hqserver.client.app.util.HQUserUtility;
 
-	private MobilePaymentActivity activity;
-	
-	public OnLoginClickListener(MobilePaymentActivity activity) {
+/**
+ * 
+ * @author QuanLe
+ *
+ */
+public class OnLoginClickListener extends BaseClickListener {
+
+	private LoginActivity activity;
+
+	public OnLoginClickListener(LoginActivity activity) {
 		this.activity = activity;
 	}
 	
-	public void onClick(View arg0) {
-		Intent i = new Intent(activity, MainScreenActivity.class);
-        activity.startActivityForResult(i, 2);
+	public void run() {
+		try {
+			EditText username = (EditText) activity
+					.findViewById(R.id.username_login);
+			EditText password = (EditText) activity
+					.findViewById(R.id.password_login);
+			if (HQUserUtility.getInstance().login(activity.getDataHelper(),
+					username.getText().toString(), password.getText().toString())) {
+				activity.getProgressDialog().dismiss();
+				Intent i = new Intent(activity, MainScreenActivity.class);
+				activity.startActivityForResult(i, 2);
+			}else{
+				activity.getProgressDialog().dismiss();
+				AppUtil.createMessageDialog(activity,"Your username and password is error").show();
+			}
+			
+		} catch (Exception e) {
+			activity.getProgressDialog().dismiss();
+			AppUtil.createExitOnErrorDialog(activity, e).show();
+		}
+		
 	}
-	
-	
+
+	public void onClick(View arg0) {
+		activity.showProgressDialog("Login ...");
+		startThread();
+		
+	}
+
 }

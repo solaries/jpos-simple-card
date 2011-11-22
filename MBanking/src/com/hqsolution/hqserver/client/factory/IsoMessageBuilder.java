@@ -8,7 +8,11 @@ import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
 
 import com.hqsolution.hqserver.app.util.MessageUtil;
-
+/**
+ * Builder an IsoMsg
+ * @author QuanLe
+ *
+ */
 public class IsoMessageBuilder {
 
 	public static IsoMessageBuilder createBuilder() {
@@ -31,11 +35,11 @@ public class IsoMessageBuilder {
 	}
 
 	public IsoMessageBuilder setField11(Date date) {
-		/*try {
+		try {
 			isoMsg.set(11, MessageUtil.dateToSixBytes(date));
 		} catch (ISOException e) {
 
-		}*/
+		}
 		return this;
 	}
 

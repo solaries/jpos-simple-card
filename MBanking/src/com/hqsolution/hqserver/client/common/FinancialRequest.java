@@ -10,7 +10,20 @@ import com.hqsolution.hqserver.app.dto.BankAccount;
  *
  */
 public interface FinancialRequest {
-
+	
 	boolean saveUserInfo(HQAccount account);
-
+	
+	HQAccount login(String username, String password);
+	
+	public static class Factory {
+		private static FinancialRequest instance;
+		
+		public static FinancialRequest newInstance(){
+			if(instance == null){
+				instance =  new PhoneRequestImpl();
+			}
+			return instance;
+		}
+		
+	}
 }

@@ -6,8 +6,9 @@ import java.util.List;
 import com.hqsolution.hqserver.app.util.MessageUtil;
 
 /**
+ * Unpack object message
  * 
- * @author Anh Quan
+ * @author QuanLe
  * 
  */
 public class ObjectUnPackMessage extends CommonUnPackMessage {

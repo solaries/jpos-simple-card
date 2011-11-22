@@ -1,8 +1,11 @@
 package com.hqsolution.hqserver.client.config;
 
+import com.hqsolution.hqserver.client.activity.R;
+
 public class AppConfiguration {
-	public static final String NAMESPACE = "http://service.edu.home/";
-	public static String URL = "http://192.168.1.4:8080/xxxxxx?wsdl";
-	public static final String METHOD_NAME = "addBankAccount";
-	public static final String SOAP_ACTION = "http://hello_webservice/addUser";
+	// server IP name
+	public static final String SERVER_NAME = "127.0.0.1";
+
+	// server port number
+	public static final int PORT = 9800;
 }

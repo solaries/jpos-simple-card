@@ -5,6 +5,12 @@ import java.util.List;
 
 import com.hqsolution.hqserver.app.util.MessageUtil;
 
+/**
+ * To Unpack a byte array message
+ * 
+ * @author QuanLe
+ *
+ */
 public class CommonUnPackMessage{
 	
 	protected byte[] data = {};

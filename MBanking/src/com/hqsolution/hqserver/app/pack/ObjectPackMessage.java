@@ -7,7 +7,7 @@ import com.hqsolution.hqserver.app.util.MessageUtil;
 
 /**
  * This class is aim to pack an object
- * @author Anh Quan
+ * @author QuanLe
  * 
  */
 public class ObjectPackMessage extends CommonPackMessage {

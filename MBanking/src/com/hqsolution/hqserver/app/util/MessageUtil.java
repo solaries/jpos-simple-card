@@ -30,6 +30,13 @@ public class MessageUtil {
 			(byte) '8', (byte) '9', (byte) 'a', (byte) 'b', (byte) 'c',
 			(byte) 'd', (byte) 'e', (byte) 'f' };
 
+	/**
+	 * convert byte array to Hex String
+	 * 
+	 * @param raw byte[]
+	 * @return Hex String
+	 * @throws UnsupportedEncodingException
+	 */
 	public static String getHexString(byte[] raw)
 			throws UnsupportedEncodingException {
 		byte[] hex = new byte[2 * raw.length];
@@ -43,6 +50,13 @@ public class MessageUtil {
 		return new String(hex, "ASCII");
 	}
 
+	/**
+	 * Convert Object to Byte Array
+	 * 
+	 * @param obj
+	 * @return
+	 * @throws IOException
+	 */
 	public static byte[] convertObjectToByteArray(Object obj)
 			throws IOException {
 		ObjectOutputStream os = null;

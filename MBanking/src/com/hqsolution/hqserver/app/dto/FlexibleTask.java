@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * To transfer object and taskcode
  * 
- * @author Quan
+ * @author QuanLe
  *
  */
 public class FlexibleTask implements Serializable{
@@ -30,7 +30,11 @@ public class FlexibleTask implements Serializable{
 	}
 
 
-
+	/**
+	 * Set Object to be transferred
+	 * 
+	 * @param data Object to be transferred
+	 */
 	public void setData(Object data) {
 		this.data = data;
 	}
@@ -39,7 +43,9 @@ public class FlexibleTask implements Serializable{
 		this.taskCode = taskCode;
 	}
 
-
+	public Object getData() {
+		return data;
+	}
 
 	@Override
 	public int hashCode() {

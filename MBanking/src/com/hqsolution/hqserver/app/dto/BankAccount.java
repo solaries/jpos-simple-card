@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * 
- * @author Quan
+ * @author QuanLe
  *
  */
 public class BankAccount implements Serializable{
