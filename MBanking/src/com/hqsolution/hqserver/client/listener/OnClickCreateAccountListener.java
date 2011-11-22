@@ -22,16 +22,17 @@ public class OnClickCreateAccountListener extends BaseClickListener{
 	 * run Asyn
 	 */
 	public void run() {
+		
+	}
+
+	public void onClick(View v) {
+		activity.showProgressDialog();
 		try {
 			FinancialRequest facade = FinancialRequest.Factory.newInstance();
 			HQAccount login = new HQAccount();
 			login.setFullName(activity.getName().getText().toString());
 			login.setEmail(activity.getEmail().getText().toString());
 			login.setPassword(activity.getPassword().getText().toString());
-			/*HQAccount login = new HQAccount();
-			login.setEmail("lmquan008@gmail.com");
-			login.setPassword("1234566");
-			login.setFullName("Le Minh Quan");*/
 			
 			if(facade.saveUserInfo(login)){
 				//save user info into phone
@@ -40,16 +41,14 @@ public class OnClickCreateAccountListener extends BaseClickListener{
 			activity.save(login);
 			// close dialog
 			activity.getProgressDialog().dismiss();
-			activity.finish();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			activity.getProgressDialog().dismiss();
 			AppUtil.createExitOnErrorDialog(activity, e).show();
 
+		}finally{
+			activity.finish();
 		}
-	}
-
-	public void onClick(View v) {
-		
 	}
 }

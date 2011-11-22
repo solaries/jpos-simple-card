@@ -1,5 +1,6 @@
 package com.hqsolution.hqserver.app.common;
 
+import com.hqsolution.hqserver.app.dto.BankAccount;
 import com.hqsolution.hqserver.app.dto.HQAccount;
 
 /**
@@ -23,6 +24,11 @@ public class TaskCodeDefinition {
 	 * Cast to {@link HQAccount}
 	 */
 	public static String UPDATE_ACCOUNT = "UPDATE_ACCOUNT";
+	
+	/**
+	 * Cast to {@link BankAccount}
+	 */
+	public static String ADD_BANK_ACCOUNT = "ADD_BANK_ACCOUNT";
 	
 	
 }

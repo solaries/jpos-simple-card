@@ -15,7 +15,7 @@ import com.hqsolution.hqserver.client.activity.R;
  * Application Util methods
  * 
  * @author QuanLe
- *
+ * 
  */
 public class AppUtil {
 	public static ListAdapter createListAdapter(Activity activity,
@@ -31,20 +31,17 @@ public class AppUtil {
 		final CharSequence[] phoneQuit = { "OK" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity)
 				.setIcon(android.R.attr.alertDialogStyle)
-				.setTitle("ERROR" + ex.getMessage())
-				.setSingleChoiceItems(phoneQuit, 0,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								act.finish();
-							}
-						});
+				.setMessage("There is an application error")
+				.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						act.finish();
+					}
+				});
 
 		return builder.create();
 	}
-	
+
 	public static Dialog createMessageDialog(Activity activity, String message) {
-		final Activity act = activity;
 		final CharSequence[] phoneQuit = { "OK" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity)
 				.setIcon(android.R.attr.alertDialogStyle)
@@ -54,12 +51,11 @@ public class AppUtil {
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
-								//do nothing
+								// do nothing
 							}
 						});
 
 		return builder.create();
 	}
-	
 
 }

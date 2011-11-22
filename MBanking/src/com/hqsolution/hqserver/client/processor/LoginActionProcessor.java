@@ -12,23 +12,23 @@ import com.hqsolution.hqserver.app.pack.ObjectUnPackMessage;
 import com.hqsolution.hqserver.client.factory.IsoMessageBuilder;
 
 public class LoginActionProcessor extends RequestProcessor {
-
+	private HQAccount account;
 	public LoginActionProcessor(HQAccount accountLogin) {
 		super();
+		this.account = accountLogin;
+	}
+
+	@Override
+	public void process() {
 		FlexibleTask flexibleTask = new FlexibleTask(
-				TaskCodeDefinition.GET_ACCOUNT, accountLogin);
+				TaskCodeDefinition.GET_ACCOUNT, account);
 		ObjectPackMessage message = new ObjectPackMessage(flexibleTask,
 				EntityType.FLEXIBLE_TASK);
 		// for field 11
 		byte[] data = message.pack();
 		IsoMessageBuilder.createBuilder().rebuild(this.msgSent)
 				.setField48(data).build();
-	}
-
-	@Override
-	public void process() {
 		super.process();
-		ISOMsg receiveMessage = getMsgReceived();
 	}
 	
 	/**

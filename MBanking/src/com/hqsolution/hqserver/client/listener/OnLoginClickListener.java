@@ -18,12 +18,19 @@ import com.hqsolution.hqserver.client.app.util.HQUserUtility;
 public class OnLoginClickListener extends BaseClickListener {
 
 	private LoginActivity activity;
+	private boolean isLogin = false;
 
 	public OnLoginClickListener(LoginActivity activity) {
 		this.activity = activity;
 	}
 	
 	public void run() {
+		
+		
+	}
+
+	public void onClick(View arg0) {
+		activity.showProgressDialog("Login ...");
 		try {
 			EditText username = (EditText) activity
 					.findViewById(R.id.username_login);
@@ -43,13 +50,6 @@ public class OnLoginClickListener extends BaseClickListener {
 			activity.getProgressDialog().dismiss();
 			AppUtil.createExitOnErrorDialog(activity, e).show();
 		}
-		
-	}
-
-	public void onClick(View arg0) {
-		activity.showProgressDialog("Login ...");
-		startThread();
-		
 	}
 
 }
