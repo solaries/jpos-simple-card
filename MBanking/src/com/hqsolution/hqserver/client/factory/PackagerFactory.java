@@ -9,7 +9,7 @@ public class PackagerFactory {
     public static ISOPackager getPackager() {
         ISOPackager packager = null;
         try {
-            String filename = "/cfg/iso87binary.xml";
+            String filename = "/iso87binary.xml";
             InputStream is = null;
             is = PackagerFactory.class.getResourceAsStream(filename);
             packager = new HQGenericPackager(is);
