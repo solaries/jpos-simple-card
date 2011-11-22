@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, Mobile Payment Login!</string>
+    <string name="hello">Login To Your Account!</string>
     <!-- Front Activity -->
     <string name="main.username">Username : </string>
     <string name="main.password">Password : </string>
@@ -18,12 +18,12 @@
     <string name="add.account.title">Add a bank account </string>
     <string name="add.account.holder">Account Holder: </string>
     <string name="add.account.number">Account Number: </string>
-    <string name="add.account.bankname">Bank Name Email : </string>
+    <string name="add.account.bankname">Bank Name : </string>
     <string name="add.account.routing">Routing Number : </string>
     <string name="add.account.submit">Submit</string>
     
     
-    <string name="app_name">MobilePayment</string>
-    <string name="app.server">localhost</string>
+    <string name="app_name">Mobile Payment</string>
+    <string name="app.server">127.0.0.1</string>
     <string name="app.port">8080</string>
 </resources>
