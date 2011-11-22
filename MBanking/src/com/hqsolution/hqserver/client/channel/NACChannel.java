@@ -63,14 +63,34 @@ public class NACChannel {
 		this.header = header;
 	}
 
+	/**
+	 * @param host
+	 *            remote host
+	 * @param port
+	 *            remote port
+	 * @throws IOException
+	 *             on error
+	 * 
+	 *             Use Socket factory if exists. If it is missing create a
+	 *             normal socket
+	 * @see ISOClientSocketFactory
+	 * @return newly created socket
+	 */
+	protected Socket newSocket(String host, int port) throws IOException {
+		Socket s = new Socket();
+		if (timeout > 0) {
+			s.connect(new InetSocketAddress(host, port), timeout);
+			
+		} else {
+			s.connect(new InetSocketAddress(host, port));
+		}
+		return s;
+	}
+	
 	public void connect() {
 		try {
 			// create socket and connect
 			sock = newSocket(serverIPname, serverPort);
-
-			if (timeout > 0) {
-				sock.setSoTimeout(timeout);
-			}
 
 			// create reader and writer
 			serverIn = new DataInputStream(sock.getInputStream());
@@ -307,7 +327,7 @@ public class NACChannel {
 
 	public static void main(String[] args) {
 		byte[] header = new byte[] { 0x60, 0x00, 0x01, 0x00, 0x02 };
-		NACChannel clientChanel = new NACChannel("localhost", 9800,
+		NACChannel clientChanel = new NACChannel("20.203.5.190", 9800,
 				PackagerFactory.getPackager(), header);
 		clientChanel.connect();
 
@@ -329,41 +349,18 @@ public class NACChannel {
 
 		try {
 			// testing only
-			System.out.println(ISOUtil.hexString(msg.pack()));
+			//msg.setPackager(PackagerFactory.getPackager());
+			//System.out.println(ISOUtil.hexString(msg.pack()));
 
 			clientChanel.send(msg);
 			ISOMsg receive = clientChanel.receive();
 
 			// testing only
-			System.out.println(ISOUtil.hexString(receive.pack()));
+			//System.out.println(ISOUtil.hexString(receive.pack()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ISOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @param host
-	 *            remote host
-	 * @param port
-	 *            remote port
-	 * @throws IOException
-	 *             on error
-	 * 
-	 *             Use Socket factory if exists. If it is missing create a
-	 *             normal socket
-	 * @see ISOClientSocketFactory
-	 * @return newly created socket
-	 */
-	protected Socket newSocket(String host, int port) throws IOException {
-		Socket s = new Socket();
-		if (timeout > 0) {
-			s.connect(new InetSocketAddress(host, port), timeout);
-			
-		} else {
-			s.connect(new InetSocketAddress(host, port));
-		}
-		return s;
 	}
 }
