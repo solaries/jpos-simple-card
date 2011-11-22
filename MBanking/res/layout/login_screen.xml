@@ -2,8 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:orientation="vertical">
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="@string/hello" />
+	<ImageView android:id="@+id/imageView1" android:src="@drawable/money"
+		android:layout_height="wrap_content" android:layout_width="match_parent"></ImageView>
+	<TextView android:layout_height="wrap_content"
+		android:gravity="center_vertical|center_horizontal"
+		android:textStyle="bold" android:text="@string/hello" android:textSize="20dp"
+		android:layout_width="match_parent" />
 	<TextView android:text="@string/main.username" android:id="@+id/textView1"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 	<EditText android:layout_width="match_parent"
