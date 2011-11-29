@@ -26,6 +26,7 @@ public class HQUserUtility {
 		if(account == null){
 			return false;
 		}
+		AppUtil.getSession().set("user", account);
 		return true;
 	}
 }

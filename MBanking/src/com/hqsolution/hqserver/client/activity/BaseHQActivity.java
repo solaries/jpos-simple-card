@@ -20,6 +20,7 @@ public class BaseHQActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		dataHelper = new ApplicationDataHelper(this);
+		
 	}
 	
 	public ApplicationDataHelper getDataHelper() {

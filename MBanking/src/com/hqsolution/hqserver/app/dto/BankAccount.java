@@ -18,6 +18,8 @@ public class BankAccount implements Serializable{
 	private String routingNumber;
 	private String accountNumber;
 	private String fullName;
+	private boolean verify;
+	private boolean valid;
 	
 	public BankAccount() {
 		// TODO Auto-generated constructor stub
@@ -30,6 +32,8 @@ public class BankAccount implements Serializable{
 		this.routingNumber = routingNumber;
 		this.accountNumber = accountNumber;
 		this.fullName = fullName;
+		this.verify = false;
+		this.valid = false;
 	}
 
 	public String getBankName() {
@@ -47,5 +51,12 @@ public class BankAccount implements Serializable{
 		return fullName;
 	}
 	
+	public boolean isVerify() {
+		return verify;
+	}
+	
+	public boolean isValid() {
+		return valid;
+	}
 	
 }

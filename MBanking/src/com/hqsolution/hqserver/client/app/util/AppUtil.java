@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 
 import com.hqsolution.hqserver.client.activity.R;
+import com.hqsolution.hqserver.client.sess.ApplicationSession;
+import com.hqsolution.hqserver.client.sess.ISession;
 
 /**
  * Application Util methods
@@ -56,6 +58,10 @@ public class AppUtil {
 						});
 
 		return builder.create();
+	}
+	
+	public static ISession getSession(){
+		return ApplicationSession.getInstance();
 	}
 
 }

@@ -12,6 +12,11 @@ public abstract class BaseClickListener implements View.OnClickListener, Runnabl
 		Thread thread = new Thread(this);
 		thread.start();
 	}
+	
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 

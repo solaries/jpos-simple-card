@@ -22,15 +22,15 @@ public final class PhoneRequestImpl implements FinancialRequest {
 	}
 
 	public boolean saveUserInfo(HQAccount account) {
-		HQAccountCreateProcessor processor = new HQAccountCreateProcessor(
+		/*HQAccountCreateProcessor processor = new HQAccountCreateProcessor(
 				account);
-		processor.process();
+		processor.process();*/
 
 		return true;
 	}
 
 	public HQAccount login(String username, String password) {
-		HQAccount accountLogin = new HQAccount();
+		/*HQAccount accountLogin = new HQAccount();
 		accountLogin.setEmail(username);
 		accountLogin.setPassword(password);
 		LoginActionProcessor processor = new LoginActionProcessor(accountLogin);
@@ -40,6 +40,11 @@ public final class PhoneRequestImpl implements FinancialRequest {
 				|| returnAccount.getFullName().trim().length() == 0) {
 			return returnAccount;
 		}
-		return null;
+		return null;*/
+		HQAccount accountLogin = new HQAccount();
+		accountLogin.setFullName("Quan Minh Le");
+		accountLogin.setEmail("lmquan008@yahoo.com");
+		accountLogin.setPassword("123456");
+		return accountLogin;
 	}
 }
