@@ -11,4 +11,6 @@ public final class SystemConstant {
 	public final static String SOURCE = "SOURCE";
 	public final static String QUEUE = "HQTXNMGR";
 	public final static String CONNECTION = "CONNECTION";
+	public final static String ERROR_FLOW = "ERROR_FLOW";
+	public final static String RC = "RESPONSE_CODE";
 }

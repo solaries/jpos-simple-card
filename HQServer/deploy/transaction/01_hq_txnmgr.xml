@@ -17,13 +17,19 @@
         <property name="000000" value="ErrorFlow"/>
      -->
      
+    <property name="ADD_ACCOUNT" value="AddAccount"/>
+    <property name="ERROR_FLOW" value="ErrorFlow"/>
 </participant> 
  
-<group name="test">
+<group name="AddAccount">
  	<participant class="com.hqsolution.hqserver.app.core.participant.CheckAccount" logger="Q2" ></participant>
-	 <participant class="com.hqsolution.hqserver.app.core.participant.SendResponse" logger="Q2"></participant>
- </group> 
+ 	<participant class="com.hqsolution.hqserver.app.core.participant.AddAccount" logger="Q2" ></participant>
+	<participant class="com.hqsolution.hqserver.app.core.participant.SendResponse" logger="Q2"></participant>
+</group> 
 
+<group name="ErrorFlow">
+	<participant class="com.hqsolution.hqserver.app.core.participant.ErrorHandler" logger="Q2"></participant>
+</group> 
  
  <!-- 
  <group name="Redeem">

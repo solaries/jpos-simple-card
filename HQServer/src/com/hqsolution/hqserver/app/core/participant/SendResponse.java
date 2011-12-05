@@ -70,7 +70,7 @@ public class SendResponse implements AbortParticipant {
 			ISOMsg msg = (ISOMsg) ctx.get(SystemConstant.REQUEST);
 			
 			//Get response code 
-			//String rc = (String)ctx.get(Constant.RC);
+			String rc = (String)ctx.get(SystemConstant.RC);
 			
 			if (source != null && source.isConnected() && msg != null) {
 				
@@ -79,66 +79,15 @@ public class SendResponse implements AbortParticipant {
 				msgResponse.set(0,"0210");
 				msgResponse.set(3,(String)msg.getValue(3));
 				msgResponse.set(11,(String)msg.getValue(11));
-				//msgResponse.set(41,(String)msg.getValue(41));
-				//msgResponse.set(42,(String)msg.getValue(42));
-				msgResponse.set(39, "00");
 				msgResponse.set(48,msg.getComponent(48).getBytes());
-				/*if(rc == null || "00".equals(rc)) {
+				if(rc == null || "00".equals(rc)) {
 					msgResponse.set(39, "00");
 				}
 				else if(rc != null) {
 					int error = Integer.parseInt(rc);
-					String strError = "";
-					switch(error){
-					case 14 :
-						msgResponse.set(39,"14");
-						strError = MessageHelper.makeTLV("FF39",Constant.CARD_NOT_FOUND);
-						msgResponse.set(61,ISOUtil.hex2byte(strError));
-						break;
-					case 54 :
-						msgResponse.set(39,"54");
-						strError = MessageHelper.makeTLV("FF39",Constant.EXPIRE_CARD);
-						msgResponse.set(61,ISOUtil.hex2byte(strError));
-						break;
-					case 15:
-						msgResponse.set(39,"15");
-						strError = MessageHelper.makeTLV("FF39",Constant.INVALID_FIELD);
-						msgResponse.set(61,ISOUtil.hex2byte(strError));
-						break;
-					case 3 :
-						msgResponse.set(39,"03");
-						strError = MessageHelper.makeTLV("FF39",Constant.MID_OR_TID_NOT_FOUND);
-						msgResponse.set(61,ISOUtil.hex2byte(strError));
-						break;
-					case 58:
-						msgResponse.set(39,"58");
-						strError = MessageHelper.makeTLV("FF39",Constant.POSCC_NOT_FOUND);
-						msgResponse.set(61,ISOUtil.hex2byte(strError));
-						break;
-					case 24:
-						msgResponse.set(39,"24");
-						strError = MessageHelper.makeTLV("FF39",Constant.FORWARD_FAIL);
-						msgResponse.set(61,ISOUtil.hex2byte(strError));
-						break;
-					case 93 :
-						msgResponse.set(39,"93");
-						strError = MessageHelper.makeTLV("FF39",Constant.NO_ACTIVATED_CARD);
-						msgResponse.set(61,ISOUtil.hex2byte(strError));
-						break;
-					default :
-						msgResponse.set(39,"12");
-						strError = MessageHelper.makeTLV("FF39",Constant.OTHER_ERROR);
-						msgResponse.set(61,ISOUtil.hex2byte(strError));
-						break;
-					}
+					
 				}
 				
-				source.send(msgResponse);
-				
-				LMSLogSource logSource = LMSLogSource.getLogSource("LMS");
-				logSource.printHexValue("Error_Receive", ISOUtil.hexString(msg.pack()));
-				logSource.printHexValue("Error_Response", ISOUtil.hexString(msgResponse.pack()));
-				*/
 				source.send(msgResponse);
 			}
 		} catch (VetoException e) {

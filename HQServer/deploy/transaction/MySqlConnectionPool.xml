@@ -6,8 +6,8 @@
 	<property name="host" value="localhost" />
 	<property name="port" value="3306" />
 	<property name="dbname" value="hqdb" />
-	<property name="username" value="hqgroup" />
-	<property name="password" value="matkhau" />
+	<property name="username" value="root" />
+	<property name="password" value="matkhau7" />
 	
 	<!-- End DB connection pool configuration -->
 	

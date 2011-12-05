@@ -68,4 +68,12 @@ public interface IAccount {
 	 * @return
 	 */
 	public int openAccount(DatabaseConnection conn, String accountId);
+	
+	/**
+	 * Check this account did exist or not in database.
+	 * @param conn
+	 * @param account
+	 * @return
+	 */
+	public int checkAccount(DatabaseConnection conn, HQAccount account);
 }

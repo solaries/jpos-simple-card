@@ -1,5 +1,7 @@
 package com.hqsolution.hqserver.app.core;
 
+import java.sql.SQLException;
+
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISORequestListener;
 import org.jpos.iso.ISOSource;
@@ -7,6 +9,8 @@ import org.jpos.space.Space;
 import org.jpos.space.SpaceFactory;
 import org.jpos.transaction.Context;
 
+import com.hqsolution.hqserver.app.common.DatabaseConnection;
+import com.hqsolution.hqserver.app.resource.Q2ContainerResourceManager;
 import com.hqsolution.hqserver.util.SystemConstant;
 
 /**
@@ -15,8 +19,7 @@ import com.hqsolution.hqserver.util.SystemConstant;
  */
 public class HQISOListener implements ISORequestListener {
     
-    public HQISOListener() {
-    }
+    public HQISOListener() {}
 
     @Override
     public boolean process(ISOSource source, ISOMsg m) {
@@ -27,6 +30,11 @@ public class HQISOListener implements ISORequestListener {
         /** put everything into context container **/
         ctx.put(SystemConstant.REQUEST, m,true);
         ctx.put(SystemConstant.SOURCE,source);
+        
+        /** Prepare DatabaseConnection for Q2 transaction **/
+        Q2ContainerResourceManager resourceManager = new Q2ContainerResourceManager();
+        DatabaseConnection connection = resourceManager.getQ2ContainerConnection();
+        ctx.put(SystemConstant.CONNECTION, connection);
         
         /** get default space (space correspond to queue but stronger) **/
         Space sp = SpaceFactory.getSpace();

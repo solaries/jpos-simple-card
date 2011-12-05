@@ -28,6 +28,6 @@ public class HQConfiguration extends QBeanSupport {
 	 */
 	public void setName(String name){
 		super.setName(name);
-		NameRegistrar.register(name, this);
+		NameRegistrar.register(REGISTER_NAME, this);
 	}
 }

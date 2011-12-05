@@ -12,9 +12,10 @@ public class IdGenerator {
 	public static int seq = 0;
 	static {
 		StringBuilder temp = new StringBuilder();
-		for (char i = 'a'; i < 'z'; i++) {
+		//just would like to use UPPERCASE character
+		/*for (char i = 'a'; i < 'z'; i++) {
 			temp.append(i);
-		}
+		}*/
 
 		for (char j = 'A'; j < 'Z'; j++) {
 			temp.append(j);
@@ -50,8 +51,19 @@ public class IdGenerator {
 	}
 
 	public static void main(String[] arg) {
-		for(int i=0 ; i< 20 ;i++){
-			System.out.println(IdGenerator.getId());
+		ArrayList<String> result = new ArrayList<String>();
+		for(int i=0 ; i< 2000 ;i++){
+			String temp = IdGenerator.getId();
+			System.out.println(temp);
+			result.add(temp);
+		}
+		int len = result.size();
+		for(int i=0; i < len -1 ; i++ ){
+			for(int j = i + 1 ; j < len ; j++){
+				if(result.get(i).equals(result.get(j))){
+					System.out.println("Duplicated");
+				}
+			}
 		}
 	}
 

@@ -9,6 +9,7 @@ import org.jpos.iso.ISOMsg;
 import org.jpos.transaction.Context;
 import org.jpos.transaction.GroupSelector;
 
+import com.hqsolution.hqserver.util.MessageHelper;
 import com.hqsolution.hqserver.util.SystemConstant;
 
 /**
@@ -27,30 +28,19 @@ public class Switch implements GroupSelector, Configurable {
 			Context ctx = (Context) context;
 
 			/** Get message from context **/
-			//ISOMsg msg = (ISOMsg) ctx.get(SystemConstant.REQUEST);
+			ISOMsg msg = (ISOMsg) ctx.get(SystemConstant.REQUEST);
 
-			String groups = "test";
+			String groups = "";
 
-			/*String transactionName = MessageHelper.getTransactionName(msg);
+			String processingCode = MessageHelper.getProcessingCode(msg);
 			
-			/** Get group String from fields No3 of message. 
-			if (transactionName == null) {
-				return cfg.get(Constant.ERROR_FLOW);
-			}
-			
-			if (!Constant.REDEEM_PROCESS.equals(transactionName)
-					&& !Constant.BALANCE_INQUIRY_PROCESS.equals(transactionName)
-					&& !Constant.VOID_REDEEM_PROCESS.equals(transactionName)
-					&& !Constant.RELOAD_PROCESS.equals(transactionName)
-					&& !Constant.VOID_RELOAD_PROCESS.equals(transactionName)) {
-				return cfg.get(Constant.ERROR_FLOW);
-			}
-			
-			if(msg.getMTI().equals(Constant.REVERSAL_MTI)){
-				groups = cfg.get(Constant.REVERSAL_PROCESS);
+			/** Get group String from task code of message. **/ 
+			if (processingCode == null || processingCode == "") {
+				groups = cfg.get(SystemConstant.ERROR_FLOW);
 			}else{
-				groups = cfg.get(transactionName);
-			}*/
+				groups = cfg.get(processingCode);
+			}
+			
 			return groups;
 			
 		} catch (Exception e) {
