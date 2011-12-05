@@ -10,7 +10,7 @@ CREATE TABLE `Account`
 `email` VARCHAR(50) NOT null,
 `password` VARCHAR(50) NOT null,
 `fullName` VARCHAR(50) NOT null,
-PRIMARY KEY(`AccountId`)
+PRIMARY KEY(`accountId`)
 ) Engine=InnoDB;
 
 /*1. Bank Acount table*/
