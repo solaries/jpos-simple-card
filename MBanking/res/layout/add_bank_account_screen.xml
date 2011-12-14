@@ -25,7 +25,6 @@
 	<EditText android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/txtBankName"></EditText>
 	<Button android:layout_width="match_parent"
-		android:layout_height="wrap_content" android:id="@+id/button1"
-		android:text="@string/add.account.submit"></Button>
+		android:layout_height="wrap_content" android:text="@string/add.account.submit" android:id="@+id/btn_add_bank_account"></Button>
 
 </LinearLayout>
