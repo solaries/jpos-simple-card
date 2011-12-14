@@ -18,6 +18,7 @@ import com.hqsolution.hqserver.client.sess.ApplicationSession;
 
 public class MainScreenActivity extends BaseHQListActivity {
 	private static final int ACTIVITY_ADD_BANK_ACCOUNT = 3;
+	private static final int GOOGLE_MAP = 4;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MainScreenActivity extends BaseHQListActivity {
 		items.add("Manage Bank Account");
 		items.add("Transfer");
 		items.add("User Profile");
+		items.add("Where is your ATM ?");
 		items.add("Sign Off");
 		ListAdapter adapter = AppUtil.createListAdapter(this, items);
 		setListAdapter(adapter);
@@ -65,7 +67,13 @@ public class MainScreenActivity extends BaseHQListActivity {
 			
 			break;
 		}
-		case 4: /* Sign Off */
+		case 4: 
+		{
+			Intent i = new Intent(this, GoogleMapActivity.class);
+	        startActivityForResult(i, GOOGLE_MAP);
+			break;
+		}
+		case 5: /* Sign Off */
 		{
 			ApplicationSession.getInstance().destroy();
 			this.finish();

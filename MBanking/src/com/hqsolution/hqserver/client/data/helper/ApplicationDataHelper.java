@@ -74,20 +74,27 @@ public class ApplicationDataHelper extends SQLiteOpenHelper {
 				"SELECT name, email, password FROM " + TAB_ACCOUNT_INFO
 						+ " WHERE email = '" + username + "' and password = '"
 						+ password + "'", null);*/
-		Cursor cursor = this.getReadableDatabase().query(
-				TAB_ACCOUNT_INFO,
-				new String[] { NAME, EMAIL, PASSWORD },
-				EMAIL + " = '" + username + 
-				"' AND " + PASSWORD + " = '"
-						+ password +"'", null, null, null, null);
-		HQAccount acc = null;
-		cursor.moveToFirst();
-		while (cursor.isAfterLast() == false) {
-			acc = new HQAccount(cursor.getString(1), cursor.getString(0),
-					cursor.getString(2));
-			break;
+		Cursor cursor = null;
+		try {
+			cursor = this.getReadableDatabase().query(
+					TAB_ACCOUNT_INFO,
+					new String[] { NAME, EMAIL, PASSWORD },
+					EMAIL + " = '" + username + 
+					"' AND " + PASSWORD + " = '"
+							+ password +"'", null, null, null, null);
+			HQAccount acc = null;
+			cursor.moveToFirst();
+			while (cursor.isAfterLast() == false) {
+				acc = new HQAccount(cursor.getString(1), cursor.getString(0),
+						cursor.getString(2));
+				break;
+			}
+			return acc;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}finally{
+			cursor.close();
 		}
-		return acc;
 	}
 
 }
