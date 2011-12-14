@@ -49,13 +49,11 @@ public class AppUtil {
 				.setIcon(android.R.attr.alertDialogStyle)
 				.setTitle("Pay Attention Please !!!")
 				.setMessage(message)
-				.setSingleChoiceItems(phoneQuit, 0,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								// do nothing
-							}
-						});
+				.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						dialog.dismiss();
+					}
+				});
 
 		return builder.create();
 	}

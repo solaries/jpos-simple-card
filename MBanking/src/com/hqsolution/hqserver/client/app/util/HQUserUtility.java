@@ -21,12 +21,13 @@ public class HQUserUtility {
 	
 	
 	public boolean login(ApplicationDataHelper dataHelper, String username, String password){
-		FinancialRequest request = FinancialRequest.Factory.newInstance();
+		/*FinancialRequest request = FinancialRequest.Factory.newInstance();
 		HQAccount account = request.login(username, password);
 		if(account == null){
 			return false;
 		}
-		AppUtil.getSession().set("user", account);
+		AppUtil.getSession().set("user", account);*/
+		
 		return true;
 	}
 }

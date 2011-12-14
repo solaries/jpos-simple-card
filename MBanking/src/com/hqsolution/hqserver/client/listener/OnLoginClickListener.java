@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 
+import com.hqsolution.hqserver.app.dto.HQAccount;
 import com.hqsolution.hqserver.client.activity.LoginActivity;
 import com.hqsolution.hqserver.client.activity.MainScreenActivity;
 import com.hqsolution.hqserver.client.activity.R;
 import com.hqsolution.hqserver.client.app.util.AppUtil;
 import com.hqsolution.hqserver.client.app.util.HQUserUtility;
+import com.hqsolution.hqserver.client.sess.ApplicationSession;
+import com.hqsolution.hqserver.client.sess.DefaultSessionListener;
 
 /**
  * 
@@ -34,11 +37,15 @@ public class OnLoginClickListener extends BaseClickListener {
 		try {
 			EditText username = (EditText) activity
 					.findViewById(R.id.username_login);
+			username.setText("hungquan@gmail.com");
 			EditText password = (EditText) activity
 					.findViewById(R.id.password_login);
-			if (HQUserUtility.getInstance().login(activity.getDataHelper(),
-					username.getText().toString(), password.getText().toString())) {
+			password.setText("123456");
+			HQAccount acc = activity.getDataHelper().login(username.getText().toString(),password.getText().toString());
+			if (acc != null) {
 				activity.getProgressDialog().dismiss();
+				ApplicationSession.getInstance().addSessionLifeCycleListener(new DefaultSessionListener());
+				ApplicationSession.getInstance().set(HQAccount.BIND_NAME, acc);
 				Intent i = new Intent(activity, MainScreenActivity.class);
 				activity.startActivityForResult(i, 2);
 			}else{
@@ -49,6 +56,7 @@ public class OnLoginClickListener extends BaseClickListener {
 		} catch (Exception e) {
 			activity.getProgressDialog().dismiss();
 			AppUtil.createExitOnErrorDialog(activity, e).show();
+			throw new RuntimeException(e);
 		}
 	}
 

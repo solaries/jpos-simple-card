@@ -14,6 +14,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.hqsolution.hqserver.client.app.util.AppUtil;
+import com.hqsolution.hqserver.client.sess.ApplicationSession;
 
 public class MainScreenActivity extends BaseHQListActivity {
 	private static final int ACTIVITY_ADD_BANK_ACCOUNT = 3;
@@ -59,13 +60,14 @@ public class MainScreenActivity extends BaseHQListActivity {
 			break;
 		case 2:
 			break;
-		case 3: /* Add bank Account */
+		case 3: 
 		{
 			
 			break;
 		}
 		case 4: /* Sign Off */
 		{
+			ApplicationSession.getInstance().destroy();
 			this.finish();
 			break;
 		}

@@ -35,6 +35,10 @@ public class CreateAccountActivity extends BaseHQActivity {
 		password = (EditText) this.findViewById(R.id.txtPassword);
 		email = (EditText) this.findViewById(R.id.txtEmail);
 		
+		name.setText("Hung Quan");
+		password.setText("123456");
+		email.setText("hungquan@gmail.com");
+		
 		Button but = (Button)this.findViewById(R.id.btnCreateAccount);
 		but.setOnClickListener(new OnClickCreateAccountListener(this));
 	}

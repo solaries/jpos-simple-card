@@ -13,6 +13,7 @@ public class HQAccount implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static final String BIND_NAME = "HQAccount";
 	
 	/**This field reserve for server. We should not take it out*/
 	private String accountId;

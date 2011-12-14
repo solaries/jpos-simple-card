@@ -9,7 +9,7 @@ public class ApplicationSession implements ISession{
 	private static ApplicationSession instance;
 	
 	public static ApplicationSession getInstance(){
-		if(instance == null){
+		if(instance == null || instance.destroy){
 			instance = new ApplicationSession();
 		}
 		return instance;
@@ -17,6 +17,7 @@ public class ApplicationSession implements ISession{
 	
 	private Map<String,Object> session;
 	private List<SessionListener> listeners;
+	private boolean destroy = false;
 	
 	private ApplicationSession(){
 		if(listeners == null){
@@ -73,6 +74,7 @@ public class ApplicationSession implements ISession{
 		preDestroy();
 		session = null;
 		listeners = null;
+		destroy = true;
 	}
 	
 }
